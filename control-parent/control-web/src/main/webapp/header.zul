@@ -1,0 +1,33 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window apply="org.zkoss.bind.BindComposer" height="100%"
+		viewModel="@id('hvm') @init('com.came.control.web.vm.HeaderVM')">
+		<grid sclass="my-grid" width="100%">
+			<columns>
+				<column align="left" />
+				<column align="right" width="75px" />
+				<column align="center" width="20px" />
+				<column align="left" width="20%" />
+				<column align="right" width="40px" />
+			</columns>
+			<rows>
+				<row>
+					<label sclass="titleFormat"
+						value="@load(hvm.organizacion.nombre)"/>
+
+					
+					<div sclass="centerimg" height="100%">
+						<image id="imagen" sclass="resizeImagen" 
+							src="/images/header/userAvatar.png"/>
+					</div>
+					<div sclass="circleBase circleGreen"/>				
+					<label value="@init(hvm.usuario.dekodifikatorUsr)" sclass="titleFormat"/>
+					<button onClick="@command('logOut')"
+						tooltiptext="Cerrar sesión" sclass="buttonlogout"
+						hoverImage="/images/toolbar/help18.png"
+						image="/images/home/off24.png" />
+				</row>
+			</rows>
+		</grid>
+	</window>
+</zk>

@@ -1,0 +1,172 @@
+<?page contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:w="http://www.zkoss.org/2005/zk/client">
+
+	<window apply="org.zkoss.bind.BindComposer" height="100%"
+		sclass="panelTransparent" id="organizacionesZul"
+		viewModel="@id('vm') @init('com.came.control.web.vm.controlpanel.OrganizacionesVM')">
+		<div id="listenerUpdateDataGeoSelect"
+			onShowNotification="@command('pushBindDataGeoSelect')" />
+
+		<borderlayout sclass="panelTransparent blHeaderMenuSelected">
+			<north size="100%" border="none" sclass="panelTransparent"
+				title="@bind(vm.moduloSession.nombre)">
+
+				<borderlayout
+					sclass="panelTransparent detailBorderLayout">
+					<north title="Detalles" size="41%"
+						sclass="panelTransparent" collapsible="true" autoscroll="true"
+						vflex="1">
+						<window id="orgfWinForm">
+							<div class="formularContainer">
+								<div class="formularSection">
+									<vlayout>
+										<label value="Nombre:"
+											sclass="formatLabelOnFormulario labelRequiredRed" />
+										<textbox
+											value="@bind(vm.organizacionSelected.razonSocial)" width="100%"
+											sclass="w3-input formatTextBoxOnFormulario" id="orgNombreTxt" />
+										<label value="Calle:"
+											sclass="formatLabelOnFormulario labelRequiredRed" />
+										<textbox
+											value="@bind(vm.organizacionSelected.direccion.calle)"
+											width="100%" sclass="w3-input formatTextBoxOnFormulario"
+											id="orgDirCalleTxt" />
+										<label value="No int:"
+											sclass="formatLabelOnFormulario" />
+										<textbox
+											value="@bind(vm.organizacionSelected.direccion.numeroInterior)"
+											width="100%" sclass="w3-input formatTextBoxOnFormulario"
+											id="orgDirNoIntTxt" />
+									</vlayout>
+								</div>
+								<div class="formularSection">
+									<vlayout>
+										<label value="CP:"
+											sclass="formatLabelOnFormulario" />
+										<textbox
+											value="@bind(vm.organizacionSelected.direccion.cp)" width="100%"
+											sclass="w3-input formatTextBoxOnFormulario" id="orgDirCpTxt" />
+										<label value="Colonia:"
+											sclass="formatLabelOnFormulario labelRequiredRed" />
+										<textbox
+											value="@bind(vm.organizacionSelected.direccion.colonia)"
+											width="100%" sclass="w3-input formatTextBoxOnFormulario"
+											id="orgDirColoniaTxt" />
+										<label value="No. exterior:"
+											sclass="formatLabelOnFormulario labelRequiredRed" />
+										<textbox
+											value="@bind(vm.organizacionSelected.direccion.numeroExterior)"
+											width="100%" sclass="w3-input formatTextBoxOnFormulario"
+											id="orgDirNoExtTxt" />
+
+									</vlayout>
+								</div>
+								<div class="formularSection">
+									<vlayout>
+										<label value="Estado:"
+											sclass="formatLabelOnFormulario labelRequiredRed" />
+										<combobox
+											id="orgDirEstadoComboBox" width="100%"
+											selectedItem="@bind(vm.organizacionSelected.direccion.estado)"
+											onSelect="@command('clickedEstado')"
+											model="@load(vm.estados)"
+											>
+											<template name="model">
+												<comboitem
+													label="@load(each.nombre)"
+													tooltiptext="@load(each.capital)" />
+											</template>
+										</combobox>
+
+										<label value="Municipio:"
+											sclass="formatLabelOnFormulario labelRequiredRed" />
+										<combobox id="orgDirMunComboBox"
+											width="100%"
+											selectedItem="@bind(vm.organizacionSelected.direccion.municipio)"
+											model="@load(vm.municipios)">
+											<template name="model">
+												<comboitem
+													label="@load(each.nombre)" />
+											</template>
+										</combobox>
+
+										<label value="Telefono:"
+											sclass="formatLabelOnFormulario labelRequiredRed" />
+										<textbox
+											value="@bind(vm.organizacionSelected.direccion.telefono.oficina)"
+											width="100%" sclass="w3-input formatTextBoxOnFormulario"
+											id="orgDirtelTxt" />
+									</vlayout>
+								</div>
+								
+								
+								
+								
+								
+								
+								<div class="formularSection">
+									<vlayout>
+										<label value="RFC:"
+											sclass="formatLabelOnFormulario labelRequiredRed" />
+										<textbox
+											value="@bind(vm.organizacionSelected.rfc)" width="100%"
+											sclass="w3-input formatTextBoxOnFormulario" id="orgRfcTxt" />
+									</vlayout>
+								</div>
+								
+								<div class="formularSection">
+									<vlayout>
+										<label value="Email:"
+											sclass="formatLabelOnFormulario" />
+										<textbox
+											value="@bind(vm.organizacionSelected.email)" width="100%"
+											sclass="w3-input formatTextBoxOnFormulario" id="orgEmailTxt" />
+									</vlayout>
+								</div>
+								
+								<div class="formularSection">
+									<vlayout>
+										<label value="Página web:"
+											sclass="formatLabelOnFormulario" />
+										<textbox
+											value="@bind(vm.organizacionSelected.web)" width="100%"
+											sclass="w3-input formatTextBoxOnFormulario"
+											id="orgWebPageTxt" />
+									</vlayout>
+								</div>
+							</div>
+						</window>
+					</north>
+					<center sclass="panelTransparent" border="none">
+						<include id="includeMap"
+							src="/modules/controlPanel/configuracion/mapMakerSelecter.zul" />
+					</center>
+					<south size="40px">
+						<borderlayout>
+							<west border="none" size="30%">
+								<button width="100%" height="100%"
+									label="Nuevo"
+									sclass="btnClear btnAddBorder btnFormatLabel btnNuevo"
+									onClick="@command('clickedOrganizacionNueva')" />
+							</west>
+							<center border="none">
+								<button width="100%" height="100%"
+									label="Guardar"
+									sclass="btnClear btnAddBorder btnFormatLabel btnGuardar"
+									onClick="@command('clickedOrganizacionGuardar')" />
+							</center>
+							<east border="none" size="30%">
+								<button width="100%" height="100%"
+									label="Buscar"
+									sclass="btnClear btnAddBorder btnFormatLabel btnBuscar"
+									onClick="@command('clickedOrganizacionBuscador')" />
+							</east>
+						</borderlayout>
+					</south>
+				</borderlayout>
+
+			</north>
+		</borderlayout>
+	</window>
+</zk>

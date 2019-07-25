@@ -1,0 +1,15 @@
+@import "styleAtributos.css"; 
+
+.z-datebox-inp{
+	width: var(--capturadorWidth);
+	height: var(--capturadorHeight);
+	font-size: var(--capturadorFontSize);
+	font-family: var(--capturadorFontFamily);
+	color: var(--capturadorFontColor);
+	background-color: var(--capturadorBckGrd);
+}
+
+.z-datebox .z-datebox-img {
+	width: var(--capturadorHeight);
+	height: var(--capturadorHeight);
+}

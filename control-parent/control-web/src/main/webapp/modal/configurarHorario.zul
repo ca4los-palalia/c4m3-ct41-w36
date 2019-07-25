@@ -1,0 +1,157 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:w="http://www.zkoss.org/2005/zk/client">
+	
+	
+	
+	<window apply="org.zkoss.bind.BindComposer"
+		id="configurarHorarioZul" onCancel="@command('closeDialog')"
+		viewModel="@id('vm') @init('com.came.control.web.vm.colaboradores.ConfigurarHorarioVM')"
+		width="45%" height="480px" position="center,center" closable="true">
+		
+		<script>
+		
+			<![CDATA[
+				function binderZkJornadaIn(data) {
+		        	var checkAll = zk.Widget.$('$checkAllInJornada');
+		        	if(checkAll.getChecked()){
+		        		zk.Widget.$('$transferHorario').setValue(JSON.stringify(data));
+					    zk.Widget.$('$transferHorario').fireOnChange();
+					    zk.Widget.$('$listenerDivHorario').fire('onShowNotification',
+					        'PARAMETERS', {
+					            toServer: true
+				        });
+		        	}
+		        }
+				
+				function binderZkJornadaOut(data) {
+		        	var checkAll = zk.Widget.$('$checkAllOutJornada');
+		        	if(checkAll.getChecked()){
+		        		zk.Widget.$('$transferHorario').setValue(JSON.stringify(data));
+					    zk.Widget.$('$transferHorario').fireOnChange();
+					    zk.Widget.$('$listenerDivHorario').fire('onShowNotification',
+					        'PARAMETERS', {
+					            toServer: true
+				        });
+		        	}
+		        }
+				
+				function binderZkComidaIn(data) {
+		        	var checkAll = zk.Widget.$('$checkAllInComida');
+		        	if(checkAll.getChecked()){
+		        		zk.Widget.$('$transferHorario').setValue(JSON.stringify(data));
+					    zk.Widget.$('$transferHorario').fireOnChange();
+					    zk.Widget.$('$listenerDivHorario').fire('onShowNotification',
+					        'PARAMETERS', {
+					            toServer: true
+				        });
+		        	}
+		        }
+				
+				function binderZkComidaOut(data) {
+		        	var checkAll = zk.Widget.$('$checkAllOutComida');
+		        	if(checkAll.getChecked()){
+		        		zk.Widget.$('$transferHorario').setValue(JSON.stringify(data));
+					    zk.Widget.$('$transferHorario').fireOnChange();
+					    zk.Widget.$('$listenerDivHorario').fire('onShowNotification',
+					        'PARAMETERS', {
+					            toServer: true
+				        });
+		        	}
+		        }
+		    ]]>
+	    </script>
+	    <div id="listenerDivHorario" onShowNotification="@command('jornadaEntradaTimer')" />
+		<textbox id="transferHorario" value="" visible="false" />
+		
+		<borderlayout sclass="panelTransparent">
+			<north border="none" sclass="bcgrdPanelTrabajo" title="@bind(vm.titleTag)"
+				>
+				<div class="formularContainer">
+					<div class="formularSection">
+						<vlayout sclass="panelTransparent">
+							<label value="ZONA HORARIA:"
+								sclass="formatLabelOnFormulario labelRequiredRed" />
+							<combobox width="100%" id="cmbxZonaHorarios" readonly="@bind(vm.readOnly)" buttonVisible="@bind(vm.buttonVisible)"
+								selectedItem="@bind(vm.selectedZonaHorario)"
+								model="@load(vm.zonasHorarios)">
+								<template name="model">
+									<comboitem
+										tooltiptext="@load(each.principalesPaises)"
+										label="@load(each.zonaHoraria)" />
+								</template>
+							</combobox>
+						</vlayout>
+					</div>
+				</div>
+			</north>
+
+			<center border="none">
+				<window vflex="1" width="100%" height="100%" border="none">
+					<listbox model="@load(vm.listaHorarios)" vflex="1" sclass="listboxBuscador">
+						<auxhead sclass="panelTransparent">
+							<auxheader colspan="2" sclass="listboxBuscadorHeader" />
+							<auxheader colspan="2" sclass="listboxBuscadorHeader">
+								<label value="JORNADA" sclass="formatLabelOnFormulario" />
+							</auxheader>
+							<auxheader colspan="2" sclass="listboxBuscadorHeader formatLabelOnFormulario">
+								<label value="COMIDA" sclass="formatLabelOnFormulario" />
+							</auxheader>
+						</auxhead>
+						<listhead>
+							<listheader label="Dia" align="center" width="90px" />
+							<listheader label="Descanso" align="center" width="90px" />
+							<listheader label="Entrada">
+								
+								<checkbox label="Todos" checked="@bind(vm.checkAllInJornada)" id="checkAllInJornada" disabled="@bind(vm.readOnly)"/>
+							</listheader>
+							<listheader label="Salida">
+								<checkbox label="Todos" checked="@bind(vm.checkAllOutJornada)" id="checkAllOutJornada" disabled="@bind(vm.readOnly)"/>
+							</listheader>
+							<listheader label="Entrada">
+								<checkbox label="Todos" checked="@bind(vm.checkAllInComida)" id="checkAllInComida" disabled="@bind(vm.readOnly)"/>
+							</listheader>
+							<listheader label="Salida">
+								<checkbox label="Todos" checked="@bind(vm.checkAllOutComida)" id="checkAllOutComida" disabled="@bind(vm.readOnly)"/>
+							</listheader>
+						</listhead>
+						<template name="model">
+							<listitem>
+								<listcell label="@bind(each.dia)" />
+								<listcell style="text-align: center;">
+									<checkbox sclass="panelTransparent" width="100%" height="100%" checked="@bind(each.descanso)" disabled="@bind(vm.readOnly)"/>
+								</listcell>
+								<listcell>
+									<timebox id="${forEachStatus.index}" disabled="@bind(each.descanso)" value="@bind(each.hEntradaDate)" cols="5" format="HH:mm" w:onClick="jornadaEntradaTimer(event)"
+										locale="mx" height="100%" width="100%" style="background: #6b7881; font-size: 110%; color: white; border: 0px; font-family: 'Dosis', sans-serif;" buttonVisible="@bind(vm.buttonVisible)" readonly="@bind(vm.readOnly)"/>
+								</listcell>
+								<listcell>
+									<timebox id="${forEachStatus.index + 10}" disabled="@bind(each.descanso)" value="@bind(each.hSalidaDate)" cols="5" format="HH:mm" w:onClick="jornadaSalidaTimer(event)"
+										locale="mx" height="100%" width="100%" style="background: #6b7881; font-size: 110%; color: white; border: 0px; font-family: 'Dosis', sans-serif;" buttonVisible="@bind(vm.buttonVisible)" readonly="@bind(vm.readOnly)"/>
+								</listcell>
+								<listcell>
+									<timebox id="${forEachStatus.index + 20}" disabled="@bind(each.descanso)" value="@bind(each.hComidaEntradaDate)" cols="5" format="HH:mm" w:onClick="comidaEntradaTimer(event)"
+										locale="mx" height="100%" width="100%" style="background: #6b7881; font-size: 110%; color: white; border: 0px; font-family: 'Dosis', sans-serif;" buttonVisible="@bind(vm.buttonVisible)" readonly="@bind(vm.readOnly)"/>
+								</listcell>
+								<listcell>
+									<timebox id="${forEachStatus.index + 30}" disabled="@bind(each.descanso)" value="@bind(each.hComidaSalidaDate)" cols="5" format="HH:mm" w:onClick="comidaSalidaTimer(event)"
+										locale="mx" height="100%" width="100%" style="background: #6b7881; font-size: 110%; color: white; border: 0px; font-family: 'Dosis', sans-serif;" buttonVisible="@bind(vm.buttonVisible)" readonly="@bind(vm.readOnly)"/>
+								</listcell>
+							</listitem>
+						</template>
+					</listbox>
+				</window>
+
+			</center>
+			<south size="40px" border="none">
+				<borderlayout>
+					<west size="50%" border="none">
+						<button width="100%" height="100%" label="Cancelar" onClick="@command('closeDialog')" sclass="btnClear btnAddBorder btnFormatLabel btnCancel" id="btnCancel"/>
+					</west>
+					<center border="none">
+						<button width="100%" height="100%" label="Aceptar" onClick="@command('transfer')" sclass="btnClear btnAddBorder btnFormatLabel btnAceptar" id="btnOk" disabled="@bind(vm.readOnly)"/>
+					</center>
+				</borderlayout>
+			</south>
+		</borderlayout>
+	</window>
+</zk>

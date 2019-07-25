@@ -1,0 +1,147 @@
+@import "styleAtributos.css";
+	 
+
+.listboxBuscador div.z-listbox-header th.z-listheader-sort {
+    background: var(--listboxColumBckGrndColorDegr-rgb);
+	background: var(--listboxColumBckGrndColorDegr-moz);
+	background: var(--listboxColumBckGrndColorDegr-webkit);
+	background: var(--listboxColumBckGrndColorDegr-linear);
+	filter: var(--listboxColumBckGrndColorDegr-filter:);
+}
+
+.listboxBuscador div.z-listbox-header th.z-listheader-sort-over {
+/* 	background:red; */
+	background: var(--listboxColumBckGrndColorDegrHouver-rgb);
+	background: var(--listboxColumBckGrndColorDegrHouver-moz);
+	background: var(--listboxColumBckGrndColorDegrHouver-webkit);
+	background: var(--listboxColumBckGrndColorDegrHouver-linear);
+	filter: var(--listboxColumBckGrndColorDegrHouver-filter:);
+}
+
+
+
+.listboxBuscador .z-listbox-body {
+/* 	background: #131313; */
+
+	background: var(--listboxBodyBckGrndColorSolid);
+}
+
+.listboxBuscador .z-listbox {
+/* 	background: none repeat scroll 0 0; */
+/* 	border: 4px solid #ffffff; */
+	
+	background: linear-gradient(top, #3F3F3F 0%, #131313 60%, #000000 100%);
+	border: 1px solid #000000;
+	
+}
+
+.listboxBuscador .z-listitem-seld {
+/* 	background-image: none; */
+	background: rgb(59,103,158); 
+	background: -moz-linear-gradient(top, rgba(59,103,158,1) 0%, rgba(43,136,217,1) 50%, rgba(32,124,202,1) 51%, rgba(125,185,232,1) 100%);	
+	background: -webkit-linear-gradient(top, rgba(59,103,158,1) 0%,rgba(43,136,217,1) 50%,rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%); 
+	background: linear-gradient(to bottom, rgba(59,103,158,1) 0%,rgba(43,136,217,1) 50%,rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', endColorstr='#7db9e8',GradientType=0 );
+}
+
+
+.listboxBuscador .z-listbox-body .z-listcell, .listboxBuscador.z-listbox-footer .z-listfooter {
+	cursor: pointer;
+}
+
+
+.listboxBuscador tr.z-listitem z-listitem-seld z-listbox-odd {
+    background-color: gold;
+    border: 1px solid #FFF;
+}
+
+/* .listboxBuscador tr.z-listitem { */
+/*   Normal row */
+/* } */
+
+.listboxBuscador tr.z-listbox-odd {
+/*   row par */
+	background: var(--listboxRowPaarBckGrndColor) repeat scroll 0 0;
+}
+
+.listboxBuscador tr.z-listitem-seld {
+	/* Elementos seleccionados */
+	background: var(--listboxRowSelectedBckGrndColorSolid-rgb);
+	background: var(--listboxRowSelectedBckGrndColorSolid-moz-linear-gradient);
+	background: var(--listboxRowSelectedBckGrndColorSolid-webkit-linear-gradient);
+	background: var(--listboxRowSelectedBckGrndColorSolid-linear-gradient);
+	filter: var(--listboxRowSelectedBckGrndColorSolid-filter);	
+}
+
+.listboxBuscador tr.overseld, .listboxBuscador td.overseld, .listboxBuscador tr.z-listitem-over, .listboxBuscador tr.z-listitem-over-seld{
+	background-image: none;
+	background-color: none;
+	background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%), radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+	
+}
+
+
+/* .listboxBuscador tr.z-listbox-odd.z-listitem-seld { */
+/*   Elementos impares seleccionados */
+/* } */
+
+@import url('https://fonts.googleapis.com/css?family=Gugi');
+
+/* Header and Footer Font and Height */
+.listboxBuscador .z-listfooter-cnt, .listboxBuscador .z-listheader-cnt {
+	border: 0 none;
+	color: #ffffff;
+	font-family: 'Gugi', cursive;
+	font-size: 100%;
+	margin: 0;
+	height: 30px; /* altura de las columnas*/
+	
+	background: var(--listboxColumBckGrndColorDegr-rgb);
+	background: var(--listboxColumBckGrndColorDegr-moz);
+	background: var(--listboxColumBckGrndColorDegr-webkit);
+	background: var(--listboxColumBckGrndColorDegr-linear);
+	filter: var(--listboxColumBckGrndColorDegr-filter:);
+}
+
+/* Altura y formato de la fuente de la celda */
+.listboxBuscador .z-listfooter-cnt, .listboxBuscador .z-listcell-cnt, .listboxBuscador .z-listheader-cnt {
+	font-size: 90%;
+	font-weight: bolder;
+	font-family: 'Advent Pro', sans-serif;
+/* 	height: 30px; */
+	color: var(--listboxCellFontColor);
+	text-align: justify;
+}
+
+.listboxBuscador .z-listheader-sort-img {
+	float: left;
+	font-size: 0;
+	left: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	position: absolute;
+}
+
+.listboxBuscador .z-listbox-header th.z-listheader-sort-over {
+	background-image: none;
+}
+
+.listboxBuscadorHeader {
+	text-align: center;
+	color: white;
+	background: var(--listboxAuxheadBckGrndColorDegr-rgb);
+	background: var(--listboxAuxheadBckGrndColorDegr-moz);
+	background: var(--listboxAuxheadBckGrndColorDegr-webkit);
+	background: var(--listboxAuxheadBckGrndColorDegr-linear);
+	filter: var(--listboxAuxheadBckGrndColorDegr-filter);
+}
+
+
+
+
+
+
+
+
+
+

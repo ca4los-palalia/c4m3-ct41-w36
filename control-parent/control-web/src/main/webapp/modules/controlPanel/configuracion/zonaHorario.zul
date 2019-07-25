@@ -1,0 +1,131 @@
+<?page contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:w="http://www.zkoss.org/2005/zk/client">
+
+	
+	<window apply="org.zkoss.bind.BindComposer" height="100%"
+		sclass="panelTransparent" id="zhZul"
+		viewModel="@id('vm') @init('com.came.control.web.vm.controlpanel.ZonaHorarioVM')">
+		
+
+		<borderlayout sclass="panelTransparent blHeaderMenuSelected">
+			<north size="100%" border="none" sclass="panelTransparent"
+				title="@bind(vm.moduloSession.nombre)">
+
+				<borderlayout
+					sclass="panelTransparent detailBorderLayout">
+					<north title="Detalles" size="18%" splittable="true"
+						sclass="panelTransparent" collapsible="true" autoscroll="true"
+						vflex="1">
+						<window id="zhWinForm">
+							<div class="formularContainer">
+								<div class="formularSection25Procent">
+									<vlayout>
+										<label value="UTC:"
+											sclass="formatLabelOnFormulario labelRequiredRed" />
+										<textbox onOK="@command('clickedZonaHorariaGuardar')"
+											value="@bind(vm.zonaHorarioSelected.utc)" width="100%"
+											sclass="w3-input formatTextBoxOnFormulario" id="zhUtcTxt" />
+									</vlayout>
+								</div>
+								
+								<div class="formularSection25Procent">
+									<vlayout>
+										<label value="Zona horario:"
+											sclass="formatLabelOnFormulario labelRequiredRed" />
+										<textbox onOK="@command('clickedZonaHorariaGuardar')"
+											value="@bind(vm.zonaHorarioSelected.zonaHoraria)" width="100%"
+											sclass="w3-input formatTextBoxOnFormulario" id="zhZonaHorarioTxt" />
+									</vlayout>
+								</div>
+								
+								<div class="formularSection25Procent">
+									<vlayout>
+										<label value="Pais:"
+											sclass="formatLabelOnFormulario labelRequiredRed" />
+										<textbox onOK="@command('clickedZonaHorariaGuardar')"
+											value="@bind(vm.zonaHorarioSelected.pais)" width="100%"
+											sclass="w3-input formatTextBoxOnFormulario" id="zhPaisTxt" />
+									</vlayout>
+								</div>
+								
+								<div class="formularSection25Procent">
+									<vlayout>	
+										<label value="Principales paises:"
+											sclass="formatLabelOnFormulario" />
+										<textbox onOK="@command('clickedZonaHorariaGuardar')"
+											value="@bind(vm.zonaHorarioSelected.principalesPaises)" width="100%"
+											sclass="w3-input formatTextBoxOnFormulario"
+											id="zhMainCountriesTxt" />
+									</vlayout>
+								</div>
+							</div>
+						</window>
+					</north>
+					<center>
+						<window vflex="1" width="100%" height="100%" border="none">
+							<listbox model="@load(vm.zonasHorarios)"
+								vflex="1" sclass="listboxBuscador"
+								selectedItem="@bind(vm.zonaHorarioSelected)">
+
+								<listhead>
+									<listheader label="ID" width="50px"
+										sort="auto(idZonaHorario)" />
+									<listheader label="UTC" sort="auto(utc)" />
+									<listheader label="Zona horaria" sort="auto(zonaHoraria)" />
+									<listheader label="Pais" sort="auto(pais)" />
+									<listheader label="Principales paises" sort="auto(principalesPaises)" />
+									<listheader align="center" width="35px"/>
+								</listhead>
+								<template name="model">
+									<listitem>
+										<listcell
+											label="@bind(each.idZonaHorario)" />
+										<listcell
+											label="@bind(each.utc)" />
+										<listcell
+											label="@bind(each.zonaHoraria)" />
+										<listcell
+											label="@bind(each.pais)">
+											<html>
+												<![CDATA[
+													<img src="C:/Users/Carlos Palalia/came-control/imagenes/paises/ar.png" alt="Italian Trulli">
+													
+												]]>
+											</html>
+										</listcell>
+										<listcell
+											label="@bind(each.principalesPaises)" />
+										<listcell>
+											<button sclass="btnClear" image="/images/toolbar/remove16.png"
+											onClick="@command('eliminarZOnaHoraria', index=forEachStatus.index)" tooltiptext="Eliminar Zona horaria"/>
+										</listcell>
+										
+									</listitem>
+								</template>
+							</listbox>
+							
+						</window>
+					</center>
+					<south size="40px">
+						<borderlayout>
+							<west border="none" size="50%">
+								<button width="100%" height="100%"
+									label="Nuevo"
+									sclass="btnClear btnAddBorder btnFormatLabel btnNuevo"
+									onClick="@command('clickedZonaHorariaNuevo')" />
+							</west>
+							<center border="none">
+								<button width="100%" height="100%"
+									label="Guardar"
+									sclass="btnClear btnAddBorder btnFormatLabel btnGuardar"
+									onClick="@command('clickedZonaHorariaGuardar')" />
+							</center>
+						</borderlayout>
+					</south>
+				</borderlayout>
+
+			</north>
+		</borderlayout>
+	</window>
+</zk>

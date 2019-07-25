@@ -1,0 +1,153 @@
+<?page contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:w="http://www.zkoss.org/2005/zk/client">
+
+			
+	<script type="text/javascript">
+		var rowSelected;
+		function changingColor() {
+			var valores = {};
+			valores.idRow = rowSelected;
+			valores.color = document.getElementById(rowSelected).value;
+			
+			console.info(valores);
+			
+			zk.Widget.$('$firedUp').setValue(JSON.stringify(valores));
+		    zk.Widget.$('$firedUp').fireOnChange();
+		    zk.Widget.$('$listenerDiv').fire('onShowNotification', 'PARAMETERS', {toServer: true});
+		}
+		  
+		function reply_click(clicked_id) {
+			rowSelected = clicked_id;
+		}
+	
+	</script>
+	<window apply="org.zkoss.bind.BindComposer" height="100%"
+		sclass="panelTransparent" id="inciZul"
+		viewModel="@id('vm') @init('com.came.control.web.vm.controlpanel.IncidenciasVM')">
+		
+		<div id="listenerDiv" onShowNotification="@command('updateColorChooser')" />
+		<textbox id="firedUp" value="" visible="false" />
+
+		<borderlayout sclass="panelTransparent blHeaderMenuSelected">
+			<north size="100%" border="none" sclass="panelTransparent"
+				title="@bind(vm.moduloSession.nombre)">
+
+				<borderlayout
+					sclass="panelTransparent detailBorderLayout">
+					<north title="Detalles" size="18%" splittable="true"
+						sclass="panelTransparent" collapsible="true" autoscroll="true"
+						vflex="1">
+						<window id="inciWinForm">
+							<div class="formularContainer">
+								<div class="formularSection">
+									<vlayout>
+										<label value="Nombre:"
+											sclass="formatLabelOnFormulario labelRequiredRed" />
+										<textbox onOK="@command('clickedIncidenciaGuardar')"
+											value="@bind(vm.incidenciaSelected.nombre)" width="100%"
+											sclass="w3-input formatTextBoxOnFormulario" id="inciNombreTxt" />
+									</vlayout>
+								</div>
+								
+								<div class="formularSection">
+									<vlayout>
+										<label value="Clave:"
+											sclass="formatLabelOnFormulario labelRequiredRed" />
+										<textbox onOK="@command('clickedIncidenciaGuardar')"
+											value="@bind(vm.incidenciaSelected.clave)" width="100%"
+											sclass="w3-input formatTextBoxOnFormulario" id="inciClaveTxt" />
+									</vlayout>
+								</div>
+								
+<!-- 								<div class="formularSection25Procent"> -->
+<!-- 									<vlayout> -->
+<!-- 										<label value="Descuento (%):" -->
+<!-- 											sclass="formatLabelOnFormulario labelRequiredRed" /> -->
+<!-- 										<intbox onOK="@command('clickedIncidenciaGuardar')" -->
+<!-- 											value="@bind(vm.incidenciaSelected.descuentoPorcentaje)" width="100%" maxlength="3" -->
+<!-- 											sclass="w3-input formatTextBoxOnFormulario" id="inciDescInt" /> -->
+<!-- 									</vlayout> -->
+<!-- 								</div> -->
+								
+								<div class="formularSection">
+									<vlayout>	
+										<label value="Descripcion:"
+											sclass="formatLabelOnFormulario" />
+										<textbox onOK="@command('clickedIncidenciaGuardar')"
+											value="@bind(vm.incidenciaSelected.descripcion)" width="100%"
+											sclass="w3-input formatTextBoxOnFormulario"
+											id="inciDescTxt" />
+									</vlayout>
+								</div>
+							</div>
+						</window>
+					</north>
+					<center>
+						<window vflex="1" width="100%" height="100%" border="none">
+							<listbox model="@load(vm.incidencias)"
+								vflex="1" sclass="listboxBuscador"
+								selectedItem="@bind(vm.incidenciaSelected)">
+
+								<listhead>
+									<listheader label="ID" width="50px"
+										sort="auto(idIncidencia)" />
+									<listheader label="Nombre" sort="auto(nombre)" />
+									<listheader label="Clave" sort="auto(clave)" />
+<!-- 									<listheader label="Descuento" sort="auto(descuentoPorcentaje)" /> -->
+									<listheader label="Descripcion" sort="auto(descripcion)" />
+									<listheader label="Color" sort="auto(color)" align="center" width="70px"/>
+									<listheader align="center" width="35px"/>
+								</listhead>
+								<template name="model">
+									<listitem>
+										<listcell
+											label="@bind(each.idIncidencia)" />
+										<listcell
+											label="@bind(each.nombre)" />
+										<listcell
+											label="@bind(each.clave)" />
+<!-- 										<listcell -->
+<!-- 											label="@bind(each.descuentoPorcentaje)" /> -->
+										<listcell
+											label="@bind(each.descripcion)" />
+										<listcell tooltiptext="clic para cambiar el color de esta incidencia">
+											<html>
+												<![CDATA[
+													<input value="${each.color}" type="color" id="${each.idIncidencia}" onClick="reply_click(this.id)" onchange="changingColor();" width="100%" height="100%" class="btnClear">
+												]]>
+											</html>
+										</listcell>
+										<listcell>
+											<button sclass="btnClear" image="/images/toolbar/remove16.png"
+												onClick="@command('eliminarIncidencia', index=forEachStatus.index)" tooltiptext="Eliminar Incidencia"/>
+										</listcell>
+										
+									</listitem>
+								</template>
+							</listbox>
+							
+						</window>
+					</center>
+					<south size="40px">
+						<borderlayout>
+							<west border="none" size="50%">
+								<button width="100%" height="100%"
+									label="Nuevo"
+									sclass="btnClear btnAddBorder btnFormatLabel btnNuevo"
+									onClick="@command('clickedIncidenciaNuevo')" />
+							</west>
+							<center border="none">
+								<button width="100%" height="100%"
+									label="Guardar"
+									sclass="btnClear btnAddBorder btnFormatLabel btnGuardar"
+									onClick="@command('clickedIncidenciaGuardar')" />
+							</center>
+						</borderlayout>
+					</south>
+				</borderlayout>
+
+			</north>
+		</borderlayout>
+	</window>
+</zk>

@@ -1,0 +1,262 @@
+<?page contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:w="http://www.zkoss.org/2005/zk/client"
+	xmlns:h="http://www.w3.org/1999/xhtml">
+
+	<script src="/scripts/clock.js" type="text/javascript" />
+	<script type="text/javascript">
+
+		function pushJornadaEntrada() { zk.Widget.$('$fly').setValue(new
+		Date().toISOString()); zk.Widget.$('$fly').fireOnChange();
+		zk.Widget.$('$listenerDiv2').fire('onShowNotification',
+		'PARAMETERS', {toServer:true}); }
+
+		function pushJornadaSalida() { zk.Widget.$('$fly').setValue(new
+		Date().toISOString()); zk.Widget.$('$fly').fireOnChange();
+		zk.Widget.$('$listenerDiv3').fire('onShowNotification',
+		'PARAMETERS', {toServer:true}); }
+
+		function pushSalirAComer() { zk.Widget.$('$fly').setValue(new
+		Date().toISOString()); zk.Widget.$('$fly').fireOnChange();
+		zk.Widget.$('$listenerDiv4').fire('onShowNotification',
+		'PARAMETERS', {toServer:true}); }
+		
+		function pushRegresarDeComer() {
+		zk.Widget.$('$fly').setValue(new Date().toISOString());
+		zk.Widget.$('$fly').fireOnChange();
+		zk.Widget.$('$listenerDiv5').fire('onShowNotification',
+		'PARAMETERS', {toServer:true}); }
+	</script>
+
+	<div apply="org.zkoss.bind.BindComposer" height="100%"
+		id="checadorzul" vflex="1"
+		viewModel="@id('vm') @init('com.came.control.web.vm.checador.ChecadorVM')">
+		<div id="listenerDiv"
+			onShowNotification="@command('listenerLocation')" />
+
+
+		<div id="listenerDiv2"
+			onShowNotification="@command('pushJornadaEntradaBinder')" />
+		<div id="listenerDiv3"
+			onShowNotification="@command('pushJornadaSalidaBinder')" />
+		<div id="listenerDiv4"
+			onShowNotification="@command('pushSalirAComerBinder')" />
+		<div id="listenerDiv5"
+			onShowNotification="@command('pushRegresarDeComerBinder')" />
+
+		<textbox id="fly" value="" visible="false" />
+		<borderlayout sclass="panelTransparent blHeaderMenuSelected">
+			<north size="100%" border="none" collapsible="true"
+				sclass="panelTransparent"
+				title="Menu seleccionado">
+				<borderlayout id="blMainChecker"
+					sclass="panelTransparent">
+
+					<west size="50%" border="none" splittable="true"
+						collapsible="true" sclass="panelTransparent">
+						<borderlayout sclass="panelTransparent detailBorderLayout">
+							<north title="Registros" size="60%"
+								border="none" vflex="1" autoscroll="true"
+								sclass="panelTransparent">
+								<vlayout>
+									<div width="100%"
+										sclass="formularContainer">
+										<div sclass="formularSection" style="text-align: center;">
+											<label value="@bind(vm.diaActual)" sclass="formatLabelOnFormulario"/>
+<!-- 											<html> -->
+<!-- 												<![CDATA[ -->
+<!-- 												<h4><b>${vm.diaActual}</b></h4> -->
+<!-- 												]]> -->
+<!-- 											</html> -->
+										</div>
+										<div sclass="formularSection" style="text-align: center;">
+											<label value="@bind(vm.fechaActual)" sclass="formatLabelOnFormulario"/>
+<!-- 											<html> -->
+
+												
+<!-- 												<![CDATA[ -->
+<!-- 												<h4>${vm.fechaActual}</h4> -->
+<!-- 												]]> -->
+												
+										
+<!-- 									</html> -->
+										</div>
+										<div sclass="formularSection">
+											<html>												
+												<![CDATA[ 
+												
+													<span id="hora" class="formatClock"></span>
+													<label class="formatClock"> : </label>
+													<span id="minuto" class="formatClock"></span>
+													<label class="formatClock"> : </label>
+													<span id="segundo" class="formatClock"></span>
+													<label class="formatClock"> : </label>
+													<span id="milisegundo" class="formatClock"></span>
+												]]>
+											</html>
+										</div>
+									</div>
+									<div width="100%"
+										sclass="formularContainer">
+										<div sclass="formularSection">
+											<label
+												value="@bind(vm.usuario.datosGenerales.persona.nombre)"
+												sclass="w3-input formatTextBoxOnFormulario" />
+										</div>
+										<div sclass="formularSection">
+											<label
+												value="@bind(vm.usuario.datosGenerales.persona.apPaterno)"
+												sclass="w3-input formatTextBoxOnFormulario" />
+										</div>
+										<div sclass="formularSection">
+											<label
+												value="@bind(vm.usuario.datosGenerales.persona.apMaterno)"
+												sclass="w3-input formatTextBoxOnFormulario" />
+										</div>
+									</div>
+
+									<div width="100%"
+										sclass="formularContainer">
+
+										<div
+											sclass="formularSection50Procent">
+											
+											
+											<h:fieldset sclass="fieldSetGroup fieldSetGroupC1">
+												<h:legend sclass="fieldSetLegend">
+													Jornada laboral:
+												</h:legend>
+												
+												<div
+													sclass="formularSection50Procent">
+													<vlayout>
+
+														<label sclass="formatLabelOnFormulario" style="font-size: 80%;"
+															value="Entrada:" />
+														<label sclass="formatClock"
+															value="@bind(vm.horaClickedJornadaEntrada)" />
+													</vlayout>
+												</div>
+												<div
+													sclass="formularSection50Procent">
+													<vlayout>
+														<label sclass="formatLabelOnFormulario" style="font-size: 80%;"
+															value="Salida:" />
+														<label sclass="formatClock"
+															value="@bind(vm.horaClickedJornadaSalida)" />
+													</vlayout>
+												</div>
+											</h:fieldset>
+										</div>
+										<div
+											sclass="formularSection50Procent">
+											
+											<h:fieldset sclass="fieldSetGroup fieldSetGroupC1">
+												<h:legend sclass="fieldSetLegend">
+													Comida:
+												</h:legend>
+											
+												<div
+													sclass="formularSection50Procent">
+													<vlayout>
+
+														<label sclass="formatLabelOnFormulario" style="font-size: 80%;"
+															value="Entrada:" />
+														<label sclass="formatClock"
+															value="@bind(vm.horaClickedSaleAComer)" />
+													</vlayout>
+												</div>
+												<div
+													sclass="formularSection50Procent">
+													<vlayout>
+														<label sclass="formatLabelOnFormulario" style="font-size: 80%;"
+															value="Salida:" />
+														<label sclass="formatClock"
+															value="@bind(vm.horaClickedRegresaDeComer)" />
+													</vlayout>
+												</div>
+											</h:fieldset>
+										</div>
+									</div>
+									
+									<div width="100%"
+										sclass="formularContainer">
+										<div sclass="formularSection"></div>
+										<div sclass="formularSection"></div>
+									</div>
+								</vlayout>
+							</north>
+
+
+
+							<center border="none">
+								<borderlayout sclass="ctrlButtonsCheckBorderLayout">
+									<north size="50%" title="Control Jornada">
+										<borderlayout>
+											<west size="50%">
+												<button
+													id="btnJornadaEntrada" width="100%" height="100%"
+													w:onClick="pushJornadaEntrada();" label="Iniciar jornada"/>
+											</west>
+											<center>
+												<button
+													id="btnJornadaSalida" width="100%" height="100%"
+													label="Fin de la jornada" w:onClick="pushJornadaSalida();" />
+											</center>
+										</borderlayout>
+									</north>
+									<center title="Control Comida">
+										<borderlayout>
+											<west size="50%">
+												<button
+													id="btnComidaSalida" width="100%" height="100%"
+													label="Salir a comer" w:onClick="pushSalirAComer();" />
+											</west>
+											<center>
+												<button
+													id="btnComidaEntrada" width="100%" height="100%"
+													label="Regresar de comer"
+													w:onClick="pushRegresarDeComer();" />
+											</center>
+										</borderlayout>
+									</center>
+								</borderlayout>
+							</center>
+						</borderlayout>
+					</west>
+					<center border="none">
+						<include id="includeMap"
+							src="/modules/checador/map.html" />
+					</center>
+				</borderlayout>
+			</north>
+			<center title="Incidencias" border="none" sclass="detailBorderLayout">
+				<window border="none" width="100%" height="100%">
+					<listbox vflex="1" sclass="listboxBuscador"
+                         emptyMessage="No tienes incidencias"
+                         model="@bind(vm.incidenciasUsuario)">
+
+
+                         <listhead>
+                             <listheader label="No" width="70px"
+                                 align="center" />
+                             <listheader label="Incidencia"
+                                 sort="auto(incidencia.nombre)" />
+                             <listheader label="Fecha de incidencia" />
+                         </listhead>
+                         <template name="model">
+                             <listitem>
+                                 <listcell
+                                     label="${forEachStatus.index + 1}" />
+                                 <listcell
+                                     label="@bind(each.incidencia.nombre)" tooltiptext="@bind(each.incidencia.clave)"/>
+                                 <listcell
+                                     label="@bind(each.fecha)" />
+                             </listitem>
+                         </template>
+                     </listbox>
+				</window>
+			</center>
+		</borderlayout>
+	</div>
+</zk>

@@ -1,0 +1,69 @@
+<html>
+<head>
+
+<link rel="stylesheet"
+	href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+
+<style>
+	#map { 
+	    width: 100%;
+	    height: 100%;
+	    box-shadow: 5px 5px 5px #888;
+	}
+</style>
+
+<script>
+		navigator.geolocation.getCurrentPosition(function(location) {
+			var LOCATION = {};
+			LOCATION.currentTimeClient = new Date().toISOString();
+			
+			var map = L.map('map').setView([location.coords.latitude, location.coords.longitude], 15);
+
+			L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="http://www.camesoftware.com/" target="_blank">CameSoftware</a> contributors',
+				maxZoom: 18
+			}).addTo(map);
+			
+			L.control.scale().addTo(map);
+			
+			var marker = L.marker([location.coords.latitude, location.coords.longitude], {
+				elevation: 260.0,
+		        title: "Locacion local"
+			}).addTo(map);
+			
+			var geocodeService = L.esri.Geocoding.geocodeService();
+			
+			LOCATION.longitud = location.coords.longitude;
+			LOCATION.latitud = location.coords.latitude;
+		      
+		    var coordenadas = {
+				lng: location.coords.longitude,
+				lat: location.coords.latitude,
+			};
+		    
+			geocodeService.reverse().latlng(coordenadas).run(function(error, result) {
+				marker.bindPopup(result.address.Match_addr).openPopup();
+				
+				//var res = result.address.Match_addr.replace("\"", "");
+				var res = JSON.stringify(result.address.Match_addr);
+				LOCATION.descripcion = btoa(res);
+				
+				
+				zk.Widget.$('$fly').setValue(JSON.stringify(LOCATION));
+				zk.Widget.$('$fly').fireOnChange();
+				fireEventFromClient(LOCATION);
+			});
+		});
+		
+		
+		
+		function fireEventFromClient(LOCATION) {
+			zk.Widget.$('$listenerDiv').fire('onShowNotification',LOCATION, {toServer:true});
+		}
+		
+	</script>
+</head>
+<body>
+	<div id='map'></div>
+</body>
+</html>

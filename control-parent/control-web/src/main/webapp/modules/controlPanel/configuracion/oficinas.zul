@@ -1,0 +1,245 @@
+<?page contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:w="http://www.zkoss.org/2005/zk/client">
+	
+	<script>
+		<![CDATA[
+			function jornadaEntradaTimer(e) {
+				var data = new Object();
+				data.idIndex = typeof e.target.id === "undefined" ? null : e.target.id;
+				data.time = e.target._lastChg;
+			    binderZkJornadaIn(data);
+			}
+			
+			function jornadaSalidaTimer(e) {
+				var data = new Object();
+				data.idIndex = typeof e.target.id === "undefined" ? null : e.target.id;
+				data.time = e.target._lastChg;
+				binderZkJornadaOut(data);
+			}
+			
+			function comidaEntradaTimer(e) {
+				var data = new Object();
+				data.idIndex = typeof e.target.id === "undefined" ? null : e.target.id;
+				data.time = e.target._lastChg;
+				binderZkComidaIn(data);
+			}
+			
+			function comidaSalidaTimer(e) {
+				var data = new Object();
+				data.idIndex = typeof e.target.id === "undefined" ? null : e.target.id;
+				data.time = e.target._lastChg;
+				binderZkComidaOut(data);
+			}
+		]]>
+	</script>
+	
+	<window apply="org.zkoss.bind.BindComposer" height="100%"
+		sclass="panelTransparent" id="oficinasZul"
+		viewModel="@id('vm') @init('com.came.control.web.vm.controlpanel.OficinaVM')">
+		
+		<div id="listenerUpdateDataGeoSelect"
+			onShowNotification="@command('pushBindDataGeoSelect')" />
+		
+		<borderlayout sclass="panelTransparent blHeaderMenuSelected">
+			<north size="100%" border="none" sclass="panelTransparent"
+				title="@bind(vm.moduloSession.nombre)">
+
+				<borderlayout
+					sclass="panelTransparent detailBorderLayout">
+					<north title="Detalles"
+						sclass="panelTransparent" collapsible="true" autoscroll="true"
+						vflex="1">
+						<window id="offWinForm">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							<div class="formularContainer">
+								<div class="formularSection25Procent">
+									<vlayout>
+										<label value="Nombre:"
+											sclass="formatLabelOnFormulario labelRequiredRed" />
+										<textbox
+											value="@bind(vm.selectedOficina.nombre)" width="100%"
+											sclass="w3-input formatTextBoxOnFormulario" id="ofNombreTxt" />
+									</vlayout>
+								</div>
+
+								<div class="formularSection25Procent">
+									<vlayout>
+										<label value="CP:"
+											sclass="formatLabelOnFormulario" />
+										<textbox
+											value="@bind(vm.selectedOficina.direccion.cp)" width="100%"
+											sclass="w3-input formatTextBoxOnFormulario" id="ofDirCpTxt" />
+									</vlayout>
+								</div>
+
+								<div class="formularSection25Procent">
+									<vlayout>
+										<label value="Estado:"
+											sclass="formatLabelOnFormulario labelRequiredRed" />
+										<combobox
+											id="ofDirEstadoComboBox" width="100%"
+											selectedItem="@bind(vm.selectedOficina.direccion.estado)"
+											onSelect="@command('clickedEstado')"
+											model="@load(vm.estados)">
+											<template name="model">
+												<comboitem
+													label="@load(each.nombre)"
+													tooltiptext="@load(each.capital)" />
+											</template>
+										</combobox>
+									</vlayout>
+								</div>
+
+								<div class="formularSection25Procent">
+									<vlayout>
+										<label value="Municipio:"
+											sclass="formatLabelOnFormulario labelRequiredRed" />
+										<combobox id="ofDirMunComboBox"
+											width="100%"
+											selectedItem="@bind(vm.selectedOficina.direccion.municipio)"
+											model="@load(vm.municipios)">
+											<template name="model">
+												<comboitem
+													label="@load(each.nombre)" />
+											</template>
+										</combobox>
+									</vlayout>
+								</div>
+							</div>
+
+
+
+							<div class="formularContainer">
+								<div class="formularSection25Procent">
+									<vlayout>
+										<label value="Calle:"
+											sclass="formatLabelOnFormulario labelRequiredRed" />
+										<textbox
+											value="@bind(vm.selectedOficina.direccion.calle)"
+											width="100%" sclass="w3-input formatTextBoxOnFormulario"
+											id="ofDirCalleTxt" />
+									</vlayout>
+								</div>
+
+								<div class="formularSection25Procent">
+									<vlayout>
+										<label value="No. exterior:"
+											sclass="formatLabelOnFormulario labelRequiredRed" />
+										<textbox
+											value="@bind(vm.selectedOficina.direccion.numeroExterior)"
+											width="100%" sclass="w3-input formatTextBoxOnFormulario"
+											id="ofDirNoExtTxt" />
+									</vlayout>
+								</div>
+
+								<div class="formularSection25Procent">
+									<vlayout>
+										<label value="No int:"
+											sclass="formatLabelOnFormulario" />
+										<textbox
+											value="@bind(vm.selectedOficina.direccion.numeroInterior)"
+											width="100%" sclass="w3-input formatTextBoxOnFormulario"
+											id="ofDirNoIntTxt" />
+									</vlayout>
+								</div>
+
+								<div class="formularSection25Procent">
+									<vlayout>
+										<label value="Colonia:"
+											sclass="formatLabelOnFormulario labelRequiredRed" />
+										<textbox
+											value="@bind(vm.selectedOficina.direccion.colonia)"
+											width="100%" sclass="w3-input formatTextBoxOnFormulario"
+											id="ofDirColoniaTxt" />
+									</vlayout>
+								</div>
+							</div>
+							
+							
+							<div class="formularContainer">
+								<div class="formularSection25Procent">
+									<vlayout>
+										<label value="Telefono:"
+											sclass="formatLabelOnFormulario labelRequiredRed" />
+										<textbox
+											value="@bind(vm.selectedOficina.direccion.telefono.oficina)"
+											width="100%" sclass="w3-input formatTextBoxOnFormulario"
+											id="ofDirtelTxt" />
+									</vlayout>
+								</div>
+
+								<div class="formularSection25Procent">
+<!-- 									<vlayout> -->
+<!-- 										<label value="Horario:" -->
+<!-- 											sclass="formatLabelOnFormulario labelRequiredRed" /> -->
+<!-- 										<button label="Configurar horario" width="100%" height="100%" sclass="btnClear btnAddBorder btnFormatLabel btnViewer" -->
+<!-- 											onClick="@command('configurarHorario')"/> -->
+<!-- 									</vlayout> -->
+								</div>
+
+								<div class="formularSection25Procent">
+								</div>
+
+								<div class="formularSection25Procent">
+								</div>
+							</div>
+
+
+
+
+
+
+
+
+
+
+
+
+						</window>
+					</north>
+					<center sclass="panelTransparent" border="none">
+						<include id="includeMap"
+							src="/modules/controlPanel/configuracion/mapMakerSelecter.zul" />
+					</center>
+					<south size="40px">
+						<borderlayout>
+							<west border="none" size="30%">
+								<button width="100%" height="100%"
+									label="Nuevo"
+									sclass="btnClear btnAddBorder btnFormatLabel btnNuevo"
+									onClick="@command('clickedOficinaNueva')" />
+							</west>
+							<center border="none">
+								<button width="100%" height="100%"
+									label="Guardar"
+									sclass="btnClear btnAddBorder btnFormatLabel btnGuardar"
+									onClick="@command('clickedOficinaGuardar')" />
+							</center>
+							<east border="none" size="30%">
+								<button width="100%" height="100%"
+									label="Buscar"
+									sclass="btnClear btnAddBorder btnFormatLabel btnBuscar"
+									onClick="@command('clickedOficinaBuscador')" />
+							</east>
+						</borderlayout>
+					</south>
+				</borderlayout>
+
+			</north>
+		</borderlayout>
+	</window>
+</zk>

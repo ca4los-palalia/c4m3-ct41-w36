@@ -1,0 +1,906 @@
+<?page contentType="text/html;charset=UTF-8"?>
+<zk xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:w="http://www.zkoss.org/2005/zk/client">
+	
+	<window apply="org.zkoss.bind.BindComposer" height="100%"
+		sclass="panelTransparent" id="colaboradoresvm"
+		viewModel="@id('vm') @init('com.came.control.web.vm.colaboradores.ColaboradoresVM')">
+
+		<borderlayout sclass="panelTransparent blHeaderMenuSelected">
+			<north size="100%" border="none" sclass="panelTransparent"
+				title="@bind(vm.moduloSession.nombre)">
+
+				<borderlayout id="blmain" sclass="panelTransparent">
+					<center id="centerPanelData" vflex="1"
+						autoscroll="true" sclass="panelTransparent">
+						<div>
+
+							<h:fieldset sclass="fieldSetGroup fieldSetGroupC1">
+								<h:legend sclass="fieldSetLegend">
+									Trabajador:
+								</h:legend>
+
+								<div class="formularContainer">
+
+
+									<div class="formularSection">
+										<vlayout
+											style="text-align: center;">
+											<image
+												style="width: 50%; height: auto;"
+												content="@bind(vm.selectedColaborador.imagenContent)" />
+											<div class="formularContainer">
+												<div class="formularSection">
+													<vlayout>
+														<label style="font-size:80%;"
+															value="Numero de empleado:"
+															sclass="formatLabelOnFormulario labelRequiredRed" />
+														<textbox id="txtColabClave" placeholder="Ingresar numero de empleado"
+															width="100%" value="@bind(vm.selectedColaborador.clave)"
+															sclass="w3-input formatTextBoxOnFormulario"
+															onOK="@command('clickedSave')" />
+													</vlayout>
+												</div>
+											
+												<div class="formularSection">
+													<vlayout>
+														<label value="Modificar fotografia:" style="font-size:80%;"
+															sclass="formatLabelOnFormulario" />
+														<button sclass="btnOrange"
+															Label="Subir logo" style="width: auto; height: 100%;"
+															tooltiptext="Subir logotipo de la entidad"
+															upload="true,maxsize=10000"
+															onUpload="@command('uploadLogo', upEvent=event)"
+															mold="trendy" />
+													</vlayout>
+												</div>
+												<div class="formularSection">
+													<vlayout>
+														<label value="Habilitar usuario:" style="font-size:80%;"
+															sclass="formatLabelOnFormulario" />
+														<html>
+															<![CDATA[
+																<div class="checkbox">
+																	<label>
+																		<input type="checkbox" value="${vm.selectedColaborador.activo}" />
+																		<i class="input-helper"></i>
+																		<span>Activar</span>
+																	</label>
+																</div>
+															]]>											
+														</html>
+													</vlayout>
+												</div>
+											</div>
+											
+
+										</vlayout>
+										
+									</div>
+									
+									<div class="formularSection">
+										<vlayout>
+											<label value="Nombre de usuario:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<textbox
+												id="txtColabNomUsuario" width="100%"
+												value="@bind(vm.selectedColaborador.dekodifikatorUsr)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+												
+											<label
+												value="Repetir contraseña:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<textbox
+												id="txtColabpass2" width="100%"
+												value="@bind(vm.selectedColaborador.contraseniaRepetir)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+												
+											<label
+												value="Primer apellido:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<textbox
+												id="txtColabPersApPat" width="100%"
+												value="@bind(vm.selectedColaborador.datosGenerales.persona.apPaterno)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+											
+											
+										</vlayout>
+									</div>
+									<div class="formularSection">
+										<vlayout>
+											<label value="Contraseña:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<textbox id="txtColabPass"
+												width="100%" type="text"
+												value="@bind(vm.selectedColaborador.dekodifikatorPass)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+												
+											<label value="Nombres:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<textbox
+												id="txtColabPersNombre" width="100%"
+												value="@bind(vm.selectedColaborador.datosGenerales.persona.nombre)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+
+											<label
+												value="Segundo apellido:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<textbox
+												id="txtColabPersApMat" width="100%"
+												value="@bind(vm.selectedColaborador.datosGenerales.persona.apMaterno)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+											
+										</vlayout>
+									</div>
+									
+										
+									
+								</div>
+
+								<div class="formularContainer">
+									<div class="formularSection">
+										<vlayout>
+											<label
+												value="Fecha de nacimiento:"
+												sclass="formatLabelOnFormulario" />
+											<datebox
+												id="dateboxColabPersNacimiento" readonly="true" width="100%"
+												value="@bind(vm.selectedColaborador.datosGenerales.persona.fechaNacimiento)"/>
+										</vlayout>
+									</div>
+								
+									<div class="formularSection">
+										<vlayout>
+											<label value="Fecha de contratacion"
+												sclass="formatLabelOnFormulario" />
+											<datebox format="yyyy-MM-dd" locale="mx"
+												id="dateboxColabIngreso" readonly="true" width="100%"
+												value="@bind(vm.selectedColaborador.fechaContratacion)"/>
+										</vlayout>
+									</div>
+									<div class="formularSection">
+										<vlayout>
+											<label value="Fecha de alta"
+												sclass="formatLabelOnFormulario" />
+											<datebox format="yyyy-MM-dd" locale="mx"
+												id="dateboxColabAlta" readonly="true" width="100%"
+												value="@bind(vm.selectedColaborador.fechaAlta)"/>
+										</vlayout>
+									</div>
+									<div class="formularSection">
+										<vlayout>
+											<label value="Sexo:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<combobox
+												id="comboboxColabDgSexo" width="100%"
+												selectedItem="@bind(vm.selectedColaborador.datosGenerales.sexo)"
+												model="@load(vm.sexos)">
+												<template
+													name="model">
+													<comboitem
+														label="@load(each.nombre)" />
+												</template>
+											</combobox>
+										</vlayout>
+									</div>
+									<div class="formularSection">
+										<vlayout>
+											<label
+												value="Tipo de sangre:" sclass="formatLabelOnFormulario" />
+											<combobox
+												id="comboboxColabDgGpoSangui" width="100%"
+												selectedItem="@bind(vm.selectedColaborador.datosGenerales.grupoSanguineo)"
+												model="@load(vm.gruposSanguineos)">
+												<template
+													name="model">
+													<comboitem
+														label="@load(each.nombre)"
+														tooltiptext="@load(each.descripcion)" />
+												</template>
+											</combobox>
+										</vlayout>
+									</div>
+									
+									<div class="formularSection">
+										<vlayout>
+											<label value="Estado civil:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<combobox
+												id="comboboxColabDgEdoCivil" width="100%"
+												selectedItem="@bind(vm.selectedColaborador.datosGenerales.estadoCivil)"
+												model="@load(vm.estadosCiviles)">
+												<template
+													name="model">
+													<comboitem
+														label="@load(each.nombre)"
+														tooltiptext="@load(each.descripcion)" />
+												</template>
+											</combobox>
+										</vlayout>
+									</div>
+									
+									<div class="formularSection">
+										<vlayout>
+											<label value="R.F.C.:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<textbox id="txtColabDgRfc" maxlength="13"
+												width="100%" style="text-transform: uppercase;"
+												value="@bind(vm.selectedColaborador.datosGenerales.rfc)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+										</vlayout>
+									</div>
+									
+									<div class="formularSection">
+										<vlayout>
+											<label value="N.S.S.:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<textbox id="txtColabDgNss"
+												width="100%" style="text-transform: uppercase;"
+												value="@bind(vm.selectedColaborador.datosGenerales.nss)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" maxlength="11"/>
+										</vlayout>
+									</div>
+									<div class="formularSection">
+										<vlayout>
+											<label value="C.U.R.P.:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<textbox id="txtColabDgCurp"
+												width="100%" style="text-transform: uppercase;"
+												value="@bind(vm.selectedColaborador.datosGenerales.curp)"
+												maxlength="18" sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+										</vlayout>
+									</div>
+									
+									<div class="formularSection">
+										<vlayout>
+											<label
+												value="Lugar de nacimiento:"
+												sclass="formatLabelOnFormulario" />
+											<combobox
+												id="comboboxColabLugarNacimiento" width="100%"
+												selectedItem="@bind(vm.selectedColaborador.datosGenerales.lugarNacimiento)"
+												model="@load(vm.estados)">
+												<template
+													name="model">
+													<comboitem
+														label="@load(each.nombre)" />
+												</template>
+											</combobox>
+										</vlayout>
+									</div>
+									
+									
+									<div class="formularSection">
+										<vlayout>
+											<label
+												value="Nacionalidad:"
+												sclass="formatLabelOnFormulario" />
+											<combobox
+												id="comboboxColabNacionalidad" width="100%"
+												selectedItem="@bind(vm.selectedColaborador.datosGenerales.nacionalidad)"
+												model="@load(vm.nacionalidades)">
+												<template
+													name="model">
+													<comboitem
+														label="@load(each.nombre)" />
+												</template>
+											</combobox>
+										</vlayout>
+									</div>
+									
+									<div class="formularSection">
+										<vlayout>
+											<label
+												value="Tipo de empleado:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<combobox
+												id="comboboxColabTipoEmpleado" width="100%"
+												selectedItem="@bind(vm.selectedColaborador.rol)"
+												model="@load(vm.roles)">
+												<template
+													name="model">
+													<comboitem
+														label="@load(each.nombre)"
+														tooltiptext="@load(each.descripcion)" />
+												</template>
+											</combobox>
+										</vlayout>
+									</div>
+									
+									<div class="formularSection">
+										<vlayout>
+											<label value="Correo:"
+												sclass="formatLabelOnFormulario" />
+											<textbox
+												id="txtColabDgCorreo" width="100%"
+												value="@bind(vm.selectedColaborador.datosGenerales.correo)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+										</vlayout>
+									</div>
+
+									<div class="formularSection">
+										<vlayout>
+											<label
+												value="Telefono casa:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<Phonebox
+												id="txtColabDgDirTelCasa" width="100%"
+												value="@bind(vm.selectedColaborador.datosGenerales.direccion.telefono.casa)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+										</vlayout>
+									</div>
+
+									<div class="formularSection">
+										<vlayout>
+											<label
+												value="Telefono movil:" sclass="formatLabelOnFormulario" />
+											<Movilbox
+												id="txtColabDgDirTelMovil" width="100%"
+												value="@bind(vm.selectedColaborador.datosGenerales.direccion.telefono.movil)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+										</vlayout>
+									</div>
+									
+									
+									<div class="formularSection">
+										<vlayout>
+											<label value="Oficina:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											
+											<combobox
+												id="comboboxColabOFicina" width="100%" height="100%"
+												selectedItem="@bind(vm.selectedOficina)"
+												model="@load(vm.oficinas)">
+												<template
+													name="model">
+													<comboitem
+														label="@load(each.nombre)" />
+												</template>
+											</combobox>
+										</vlayout>
+									</div>
+									
+									
+									
+									<div class="formularSection">
+										<vlayout>
+											<label value="Horario:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<button label="@bind(vm.selectedColaborador.btnHorarioLabel)" sclass="@bind(vm.selectedColaborador.btnHorarioSclass)" onClick="@command('verHorario')" id="btnVerHorario" width="100%"/>
+										</vlayout>
+									</div>
+									
+									<div class="formularSection">
+										<vlayout>
+											<label value="Estatus:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<combobox
+												id="comboboxColabEstatus" width="100%" height="100%"
+												selectedItem="@bind(vm.selectedColaborador.estatus)"
+												model="@load(vm.estatusList)">
+												<template
+													name="model">
+													<comboitem
+														label="@load(each.nombre)"
+														tooltiptext="@load(each.descripcion)" />
+												</template>
+											</combobox>
+										</vlayout>
+									</div>
+									
+									<div class="formularSection">
+										<vlayout>
+											<label value="Escolaridad:"
+												sclass="formatLabelOnFormulario" />
+											<combobox
+												id="comboboxColabEscolaridad" width="100%" height="100%"
+												selectedItem="@bind(vm.selectedColaborador.datosGenerales.escolaridad)"
+												model="@load(vm.escolaridades)">
+												<template
+													name="model">
+													<comboitem
+														label="@load(each.nombre)"/>
+												</template>
+											</combobox>
+										</vlayout>
+									</div>
+									
+									
+									<div class="formularSection">
+										<vlayout>
+											<label value="Nombre del padre:"
+												sclass="formatLabelOnFormulario" />
+											<textbox
+												width="100%"
+												value="@bind(vm.selectedColaborador.datosGenerales.nombreDelPadre)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+										</vlayout>
+									</div>
+									
+									<div class="formularSection">
+										<vlayout>
+											<label value="Nombre de la madre:"
+												sclass="formatLabelOnFormulario" />
+											<textbox
+												width="100%"
+												value="@bind(vm.selectedColaborador.datosGenerales.nombreDeLaMadre)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+										</vlayout>
+									</div>
+									
+									<div class="formularSection">
+										<vlayout>
+											<label value="Nombre de la pareja:"
+												sclass="formatLabelOnFormulario" />
+											<textbox
+												width="100%"
+												value="@bind(vm.selectedColaborador.datosGenerales.nombreDeLaPareja)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+										</vlayout>
+									</div>
+									
+									<div class="formularSection">
+										<vlayout>
+											<label value="Tiene hijos:"
+												sclass="formatLabelOnFormulario" />
+											<html>
+												<![CDATA[
+													<div class="checkbox">
+														<label>
+															<input type="checkbox" value="${vm.selectedColaborador.datosGenerales.tieneHijos}" />
+															<i class="input-helper"></i>
+															<span>Si.</span>
+														</label>
+													</div>
+												]]>											
+											</html>
+										</vlayout>
+									</div>
+									
+									<div class="formularSection">
+										<vlayout>
+											<label value="Unidad medica familiar:"
+												sclass="formatLabelOnFormulario" />
+											<textbox
+												width="100%"
+												value="@bind(vm.selectedColaborador.datosGenerales.unidadMedica)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+										</vlayout>
+									</div>
+									
+								</div>
+							</h:fieldset>
+							
+							
+							
+							
+							<h:fieldset sclass="fieldSetGroup fieldSetGroupC1">
+								<h:legend sclass="fieldSetLegend">
+									Dirección:
+								</h:legend>
+
+								<div class="formularContainer">
+									<div class="formularSection">
+										<vlayout>
+											<label value="Calle:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<textbox
+												id="txtColabDgDirCalle" width="100%"
+												value="@bind(vm.selectedColaborador.datosGenerales.direccion.calle)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+										</vlayout>
+									</div>
+																	
+									<div class="formularSection">
+											<vlayout>
+												<label value="No int:"
+													sclass="formatLabelOnFormulario" />
+												<textbox
+													id="txtColabDgDirNumInt" width="100%"
+													value="@bind(vm.selectedColaborador.datosGenerales.direccion.numeroInterior)"
+													sclass="w3-input formatTextBoxOnFormulario"
+													onOK="@command('clickedSave')" />
+											</vlayout>
+									</div>
+										
+									<div class="formularSection">
+										<vlayout>
+											<label value="No ext.:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<textbox
+												id="txtColabDgDirNumExt" width="100%"
+												value="@bind(vm.selectedColaborador.datosGenerales.direccion.numeroExterior)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+										</vlayout>
+									</div>
+								
+									<div class="formularSection">
+										<vlayout>
+											<label value="Colonia:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<textbox
+												id="txtColabDgDirCol" width="100%"
+												value="@bind(vm.selectedColaborador.datosGenerales.direccion.colonia)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+										</vlayout>
+									</div>
+									
+									<div class="formularSection">
+										<vlayout>
+											<label
+												value="Codigo postal:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<Zipbox id="txtColabDgDirCp"
+												width="100%"
+												value="@bind(vm.selectedColaborador.datosGenerales.direccion.cp)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+										</vlayout>
+									</div>
+									
+									<div class="formularSection">
+										<vlayout>
+											<label value="Pais:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<combobox
+												id="comboboxColabDgDirPais" width="100%"
+												selectedItem="@bind(vm.selectedPais)"
+												onSelect="@command('clickedPais')"
+												model="@load(vm.paises)">
+												<template
+													name="model">
+													<comboitem
+														label="@load(each.nombre)"
+														tooltiptext="@load(each.clave)" />
+												</template>
+											</combobox>
+										</vlayout>
+									</div>
+									
+									<div class="formularSection">
+										<vlayout>
+											<label value="Estado:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<combobox
+												id="comboboxColabDgDirEstado" width="100%"
+												selectedItem="@bind(vm.selectedEstado)"
+												onSelect="@command('clickedEstado')"
+												model="@load(vm.estados)">
+												<template
+													name="model">
+													<comboitem
+														label="@load(each.nombre)"
+														tooltiptext="@load(each.capital)" />
+												</template>
+											</combobox>
+										</vlayout>
+									</div>
+									
+									
+									<div class="formularSection">
+										<vlayout>
+											<label value="Municipio:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<combobox
+												id="comboboxColabDgDirMun" width="100%"
+												selectedItem="@bind(vm.selectedMunicipio)"
+												model="@load(vm.municipios)">
+												<template
+													name="model">
+													<comboitem
+														label="@load(each.nombre)" />
+												</template>
+											</combobox>
+										</vlayout>
+									</div>
+								</div>
+							</h:fieldset>
+							
+							
+							
+							
+							
+							
+							
+							
+
+
+							<h:fieldset sclass="fieldSetGroup fieldSetGroupC2">
+								<h:legend sclass="fieldSetLegend">
+									Emergencia:
+								</h:legend>
+
+								<div class="formularContainer">
+									<div class="formularSection">
+										<vlayout>
+											<label value="Nombres:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<textbox
+												id="txtNombrePersEmerg" width="100%"
+												value="@bind(vm.selectedColaborador.datosGenerales.emergencia.persona.nombre)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+										</vlayout>
+									</div>
+
+									<div class="formularSection">
+										<vlayout>
+											<label
+												value="Primer apellido:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<textbox
+												id="txtApPatPersEmerg" width="100%"
+												value="@bind(vm.selectedColaborador.datosGenerales.emergencia.persona.apPaterno)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+										</vlayout>
+									</div>
+									<div class="formularSection">
+										<vlayout>
+											<label
+												value="Segundo apellido:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<textbox
+												id="txtApMatPersEmerg" width="100%"
+												value="@bind(vm.selectedColaborador.datosGenerales.emergencia.persona.apMaterno)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+										</vlayout>
+									</div>
+								</div>
+
+								<div class="formularContainer">
+									<div class="formularSection">
+										<vlayout>
+											<label
+												value="Telefono casa:" sclass="formatLabelOnFormulario" />
+											<Phonebox width="100%"
+												value="@bind(vm.selectedColaborador.datosGenerales.emergencia.telefono.casa)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+										</vlayout>
+									</div>
+
+									<div class="formularSection">
+										<vlayout>
+											<label
+												value="Telefono oficina:" sclass="formatLabelOnFormulario" />
+											<Phonebox width="100%"
+												value="@bind(vm.selectedColaborador.datosGenerales.emergencia.telefono.oficina)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+										</vlayout>
+									</div>
+
+									<div class="formularSection">
+										<vlayout>
+											<label
+												value="Telefono movil:"
+												sclass="formatLabelOnFormulario labelRequiredRed" />
+											<Movilbox
+												id="txtMovilPersEmerg" width="100%"
+												value="@bind(vm.selectedColaborador.datosGenerales.emergencia.telefono.movil)"
+												sclass="w3-input formatTextBoxOnFormulario"
+												onOK="@command('clickedSave')" />
+										</vlayout>
+									</div>
+								</div>
+							</h:fieldset>
+
+							<h:fieldset sclass="fieldSetGroup fieldSetGroupC3">
+								<h:legend sclass="fieldSetLegend">
+									Responsable:
+								</h:legend>
+
+								<div class="formularContainer">
+									<div class="formularSection">
+										<combobox width="100%"
+											id="comboResponsable"
+											selectedItem="@bind(vm.selectedResponsable)"
+											model="@load(vm.responsables)">
+											<template name="model">
+												<comboitem
+													label="@load(each.datosGenerales.persona.nombreCompleto)" />
+											</template>
+										</combobox>
+									</div>
+								</div>
+
+								<div class="formularContainer">
+									<div class="formularSection">
+										<vlayout>
+											<label value="Nombres:"
+												sclass="formatLabelOnFormulario" />
+											<textbox width="100%"
+												value="@bind(vm.selectedResponsable.datosGenerales.persona.nombre)"
+												readonly="true" sclass="w3-input formatTextBoxOnFormulario" />
+										</vlayout>
+									</div>
+
+									<div class="formularSection">
+										<vlayout>
+											<label
+												value="Primer apellido" sclass="formatLabelOnFormulario" />
+											<textbox width="100%"
+												value="@bind(vm.selectedResponsable.datosGenerales.persona.apPaterno)"
+												readonly="true" sclass="w3-input formatTextBoxOnFormulario" />
+										</vlayout>
+									</div>
+									<div class="formularSection">
+										<vlayout>
+											<label
+												value="Segundo apellido:" sclass="formatLabelOnFormulario" />
+											<textbox width="100%"
+												value="@bind(vm.selectedResponsable.datosGenerales.persona.apMaterno)"
+												readonly="true" sclass="w3-input formatTextBoxOnFormulario" />
+										</vlayout>
+									</div>
+								</div>
+							</h:fieldset>
+
+							<h:fieldset sclass="fieldSetGroup fieldSetGroupC5">
+								<h:legend sclass="fieldSetLegend">
+									Privilegios:
+								</h:legend>
+
+								<grid sclass="my-grid"
+									id="gridPrivilege">
+									<columns sclass="panelTransparent"
+										children="@load(vm.selectedColaborador.modulosUsuario)">
+										<template name="children"
+											var="col">
+											<column sclass="panelTransparent" align="left">
+												<html>
+													<![CDATA[
+														<div class="checkbox">
+															<label>
+																<input type="checkbox" value="${col.activar}" />
+																<i class="input-helper"></i>
+																<span>${col.modulo.nombre}</span>
+															</label>
+														</div>
+													]]>											
+												</html>
+											</column>
+										</template>
+									</columns>
+								</grid>
+							</h:fieldset>
+							
+							
+							<h:fieldset sclass="fieldSetGroup fieldSetGroupC4">
+								<h:legend sclass="fieldSetLegend">
+									otros:
+								</h:legend>
+								
+								
+								
+								
+								
+								
+								
+								
+								<div class="formularContainer">
+									<div class="formularSection25Procent">
+										<vlayout>
+											<label value="Metodo de pago:"
+												sclass="formatLabelOnFormulario" />
+											<combobox width="100%"
+												selectedItem="@bind(vm.selectedColaborador.datosGenerales.metodoPago)"
+												model="@load(vm.metodosPago)">
+												<template name="model">
+													<comboitem
+														label="@load(each.nombre)" />
+												</template>
+											</combobox>
+										</vlayout>
+									</div>
+									
+									<div class="formularSection25Procent">
+										<vlayout>
+											<label value="Cuenta bancaria:"
+												sclass="formatLabelOnFormulario" />
+											<textbox width="100%" sclass="w3-input formatTextBoxOnFormulario"/>
+										</vlayout>
+									</div>
+									
+									<div class="formularSection25Procent">
+										<vlayout>
+											<label value="Banco:"
+												sclass="formatLabelOnFormulario" />
+											<combobox width="100%"
+												selectedItem="@bind(vm.selectedColaborador.datosGenerales.banco)"
+												model="@load(vm.bancos)">
+												<template name="model">
+													<comboitem
+														label="@load(each.nombre)" />
+												</template>
+											</combobox>
+										</vlayout>
+									</div>
+									
+									<div class="formularSection25Procent">
+										<vlayout>
+											<label value="CLABE bancaria:"
+												sclass="formatLabelOnFormulario" />
+											<textbox width="100%" sclass="w3-input formatTextBoxOnFormulario"/>
+										</vlayout>
+									</div>
+	
+<!-- 									<div class="formularSection25Procent"> -->
+<!-- 										<vlayout> -->
+<!-- 											<label value="Ingreso" -->
+<!-- 												sclass="formatLabelOnFormulario" /> -->
+<!-- 											<datebox format="yyyy-MM-dd" locale="mx" -->
+<!-- 												id="dateboxColabIngreso" readonly="true" width="100%" -->
+<!-- 												value="@bind(vm.selectedColaborador.fechaIngreso)"/> -->
+<!-- 										</vlayout> -->
+<!-- 									</div> -->
+	
+									<div class="formularSection25Procent">
+										<vlayout>
+										</vlayout>
+									</div>
+	
+									<div class="formularSection25Procent">
+										<vlayout>
+										</vlayout>
+									</div>
+								</div>
+							</h:fieldset>
+
+						</div>
+					</center>
+
+
+					<south size="40px">
+						<borderlayout>
+							<west border="none" size="30%">
+								<button width="100%" height="100%"
+									label="Nuevo" id="btnNuevo"
+									sclass="btnClear btnAddBorder btnFormatLabel btnNuevo"
+									onClick="@command('clickedNuevo')" />
+							</west>
+							<center border="none">
+								<button width="100%" height="100%"
+									label="Guardar"
+									sclass="btnClear btnAddBorder btnFormatLabel btnGuardar"
+									onClick="@command('clickedSave')" />
+							</center>
+							<east border="none" size="30%">
+								<button width="100%" height="100%"
+									label="Buscar"
+									sclass="btnClear btnAddBorder btnFormatLabel btnBuscar"
+									onClick="@command('clickedBuscador')" />
+							</east>
+						</borderlayout>
+					</south>
+				</borderlayout>
+
+			</north>
+		</borderlayout>
+
+
+
+	</window>
+</zk>

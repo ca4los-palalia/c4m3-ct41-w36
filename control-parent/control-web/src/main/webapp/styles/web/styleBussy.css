@@ -1,0 +1,32 @@
+.z-loading {
+	background-color: black;
+	cursor: wait;
+	white-space: nowrap;
+	padding: 3px;
+	border: 1px solid #83B5F7;
+	font-family: 'Orbitron', sans-serif;
+	height: 100%;
+	width: 100%;
+	padding-left: 40%;
+	padding-right: 40%;
+	padding-top: 20%;
+	padding-bottom: 10%;
+	opacity: 0.5;
+	overflow-x: hidden;
+}
+
+.z-loading-indicator{
+	color: #ffffff;
+	text-align: center;
+	width: 100%;
+	background-color: grey;
+}
+
+.z-loading-icon {
+	background: transparent no-repeat center;
+	background-image: url("../../images/loading.gif");
+/* 	opacity: 0.5; */
+	width: 17px;
+	height: 17px;
+	cursor: wait;
+}

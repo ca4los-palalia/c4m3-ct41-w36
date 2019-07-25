@@ -1,0 +1,43 @@
+@import "styleAtributos.css";
+
+.z-combobox-inp {
+	height: var(--capturadorHeight);
+	background-color: var(--capturadorBckGrd);
+	color: var(--capturadorFontColor);
+}
+
+.z-combobox .z-combobox-btn {
+	height: var(--capturadorHeight);
+	width: 30px;
+/* 	border: 1px solid #000000; */
+/* 	border-left: 0; */
+/* 	border-radius: 0 3px 3px 0; */
+	
+	border: 0px;
+	
+/* 	box-shadow: inset 1px 1px 0 #585858, inset -1px -1px 0 #0F0F0F; */
+}
+
+.z-combobox .z-combobox-btn-over {
+	margin: 1px;
+	
+}
+
+.z-combobox-focus .z-combobox-btn, .z-combobox-readonly ~
+	.z-combobox-btn {
+	border-left: 0px;
+}
+
+.z-combobox .z-combobox-btn, .z-combobox .z-combobox-btn-over,
+	.z-combobox-focus .z-combobox-btn-clk, .z-combobox .z-combobox-btn-clk,
+	.z-combobox-focus .z-combobox-btn, .z-combobox-readonly ~
+	.z-combobox-btn
+		.z-combobox-focus .z-combobox-btn-over, .z-combobox-readonly ~
+	.z-combobox-btn-over {
+/* 	background: url('../../images/toolbar/targetBlackHouver32.png') */
+/* 		no-repeat 13px 9px, */
+/* 		linear-gradient(top, #3f3f3f 0%, #131313 60%, #030303 100%); */
+/* 	background: url('../../images/toolbar/targetBlackHouver32.png'); */
+	background-image: url(../../images/toolbar/btnCombo38.png);
+	
+}

@@ -1,0 +1,258 @@
+/* .backgroundMainPanel{ */
+/* 	background: rgb(212,228,239); Old browsers */
+/* 	background: -moz-linear-gradient(top, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%); FF3.6-15 */
+/* 	background: -webkit-linear-gradient(top, rgba(212,228,239,1) 0%,rgba(134,174,204,1) 100%); Chrome10-25,Safari5.1-6 */
+/* 	background: linear-gradient(to bottom, rgba(212,228,239,1) 0%,rgba(134,174,204,1) 100%); W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+/* 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc',GradientType=0 ); IE6-9	 */
+/* } */
+
+/* .buttonIdentificar{ */
+/* 	border:1px solid #25729a;  */
+/* 	-webkit-border-radius: 3px;  */
+/* 	-moz-border-radius: 3px; */
+/* 	border-radius: 3px; */
+/* 	font-family: 'Meera Inimai', sans-serif; */
+/* 	font-size: 90%; */
+/* 	letter-spacing: 10px; */
+/* 	text-decoration:none; */
+/* 	text-shadow: -1px -1px 0 rgba(0,0,0,0.3); */
+/* 	font-weight:bold; color: #FFFFFF; */
+/* 	background-color: #3093c7; */
+/* 	background-image: -webkit-gradient(linear, left top, left bottom, from(#3093c7), to(#1c5a85)); */
+/* 	background-image: -webkit-linear-gradient(top, #3093c7, #1c5a85); */
+/* 	background-image: -moz-linear-gradient(top, #3093c7, #1c5a85); */
+/* 	background-image: -ms-linear-gradient(top, #3093c7, #1c5a85); */
+/* 	background-image: -o-linear-gradient(top, #3093c7, #1c5a85); */
+/* 	background-image: linear-gradient(to bottom, #3093c7, #1c5a85); */
+/* 	filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#3093c7, endColorstr=#1c5a85); */
+/* } */
+
+/* .buttonIdentificar:hover{ */
+/* 	 border:1px solid #1c5675; */
+/* 	 background-color: #26759e; background-image: -webkit-gradient(linear, left top, left bottom, from(#26759e), to(#133d5b)); */
+/* 	 background-image: -webkit-linear-gradient(top, #26759e, #133d5b); */
+/* 	 background-image: -moz-linear-gradient(top, #26759e, #133d5b); */
+/* 	 background-image: -ms-linear-gradient(top, #26759e, #133d5b); */
+/* 	 background-image: -o-linear-gradient(top, #26759e, #133d5b); */
+/* 	 background-image: linear-gradient(to bottom, #26759e, #133d5b);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#26759e, endColorstr=#133d5b); */
+/* } */
+
+/* .titleModalFormat{ */
+/* 	font-family: 'Orbitron', sans-serif; */
+/* 	color: white; */
+/* 	font-weight: bolder; */
+/* 	font-size: 80%; */
+/* } */
+
+
+/* .bckgrLogin{ */
+/* 	background: rgb(242,249,254); Old browsers */
+/* 	background: -moz-linear-gradient(top, rgba(242,249,254,1) 0%, rgba(214,240,253,1) 100%); FF3.6-15 */
+/* 	background: -webkit-linear-gradient(top, rgba(242,249,254,1) 0%,rgba(214,240,253,1) 100%); Chrome10-25,Safari5.1-6 */
+/* 	background: linear-gradient(to bottom, rgba(242,249,254,1) 0%,rgba(214,240,253,1) 100%); W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+/* 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f9fe', endColorstr='#d6f0fd',GradientType=0 ); IE6-9 */
+/* } */
+
+
+/* .topimg{ */
+/* 	text-align: center; */
+/*     padding-top: 15px;  */
+/* } */
+
+/* .txtgenericformat{ */
+/* 	background-position: 4px !important; */
+/* 	padding-left: 30px; */
+/* 	font-family: 'Nova Square', cursive; */
+/* 	font-size: 130%; */
+/* 	letter-spacing: 7px; */
+/* 	font-weight: bold; */
+/* 	text-align: center; */
+	
+/* 	border:2px solid #75c7e9; */
+/* 	border-width:1px; */
+/* 	border-style:solid; */
+/* 	border-color:#75c7e9; */
+	
+/* 	-webkit-box-shadow: 3px 3px 5px 0px rgba(50, 50, 50, 0.75); */
+/* 	-moz-box-shadow:    3px 3px 5px 0px rgba(50, 50, 50, 0.75); */
+/* 	box-shadow:         3px 3px 5px 0px rgba(50, 50, 50, 0.75); */
+/* } */
+
+/* .txtrfcentidadcolor.z-textbox { */
+/* 	background: rgb(233,246,253) url(../../images/home/textbox/org16.png) no-repeat; */
+/* 	background: -moz-linear-gradient(top, rgba(233,246,253,1) 0%, rgba(211,238,251,1) 100%) url(../../images/home/textbox/org16.png) no-repeat; */
+/* 	background: -webkit-linear-gradient(top, rgba(233,246,253,1) 0%,rgba(211,238,251,1) 100%) url(../../images/home/textbox/org16.png) no-repeat; */
+/* 	background: linear-gradient(to bottom, rgba(233,246,253,1) 0%,rgba(211,238,251,1) 100%) url(../../images/home/textbox/org16.png) no-repeat; */
+/* 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e9f6fd', endColorstr='#d3eefb',GradientType=0 ) url(../../images/home/textbox/org16.png) no-repeat; */
+/* } */
+
+/* .txtuserentidadcolor.z-textbox { */
+/* 	background: rgb(233,246,253) url(../../images/home/textbox/user.png) no-repeat; */
+/* 	background: -moz-linear-gradient(top, rgba(233,246,253,1) 0%, rgba(211,238,251,1) 100%) url(../../images/home/textbox/user.png) no-repeat; */
+/* 	background: -webkit-linear-gradient(top, rgba(233,246,253,1) 0%,rgba(211,238,251,1) 100%) url(../../images/home/textbox/user.png) no-repeat; */
+/* 	background: linear-gradient(to bottom, rgba(233,246,253,1) 0%,rgba(211,238,251,1) 100%) url(../../images/home/textbox/user.png) no-repeat; */
+/* 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e9f6fd', endColorstr='#d3eefb',GradientType=0 ) url(../../images/home/textbox/user.png) no-repeat; */
+/* } */
+
+/* .txtpassentidadcolor.z-textbox { */
+/* 	background: rgb(233,246,253) url(../../images/home/textbox/pass.png) no-repeat; */
+/* 	background: -moz-linear-gradient(top, rgba(233,246,253,1) 0%, rgba(211,238,251,1) 100%) url(../../images/home/textbox/pass.png) no-repeat; */
+/* 	background: -webkit-linear-gradient(top, rgba(233,246,253,1) 0%,rgba(211,238,251,1) 100%) url(../../images/home/textbox/pass.png) no-repeat; */
+/* 	background: linear-gradient(to bottom, rgba(233,246,253,1) 0%,rgba(211,238,251,1) 100%) url(../../images/home/textbox/pass.png) no-repeat; */
+/* 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e9f6fd', endColorstr='#d3eefb',GradientType=0 ) url(../../images/home/textbox/pass.png) no-repeat; */
+/* } */
+
+/* .labelautenticauser{ */
+/* 	font-family: 'Krona One', sans-serif; */
+/* 	color: #545454; */
+/* 	font-size: 90%; */
+/* 	font-weight: bold; */
+/* } */
+
+/* .bckgrmodalheader{ */
+/* 	padding-left: 10px; */
+/* 	background: rgb(30,87,153); */
+/* 	background: -moz-linear-gradient(top, rgba(30,87,153,1) 0%, rgba(41,137,216,1) 50%, rgba(32,124,202,1) 51%, rgba(125,185,232,1) 100%); */
+/* 	background: -webkit-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(41,137,216,1) 50%,rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%); */
+/* 	background: linear-gradient(to bottom, rgba(30,87,153,1) 0%,rgba(41,137,216,1) 50%,rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%); */
+/* 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); */
+/* } */
+
+/* .contentMessageModal{ */
+/* 	padding-left: 15px; */
+/* 	padding-top: 15px; */
+	
+/* } */
+/* .contentMessageModalFotmatText{ */
+/* 	text-align: justify; */
+/* 	font-family: 'Nova Square', cursive; */
+/* } */
+
+
+
+
+/* .buttonlogout{ */
+/* 	height: 30px; */
+/* 	width: 30px; */
+/* 	cursor: pointer; */
+/* 	background-color: Transparent; */
+/* 	background-repeat: no-repeat; */
+/* 	border: none; */
+/* 	overflow: hidden; */
+/* 	outline: none; */
+/* } */
+
+
+
+
+/* .btnBlue{ */
+/* 	background: linear-gradient(to bottom, #0078a5 0%,#00adee 100%); */
+/* 	color: #ffffff; */
+/* } */
+
+/* .btnSmoke{ */
+/* 	background: linear-gradient(to bottom, #969696 0%,#2a3530 100%); */
+/* 	color: #ffffff; */
+/* } */
+
+/* .btnBlueLow{ */
+/* 	background: linear-gradient(to bottom, #cefafd 0%,#87f3fa 100%); */
+/* 	color: black; */
+/* } */
+
+/* .btnBlueTurq{ */
+/* 	background: linear-gradient(to bottom, #0da7b9 0%,#006899 100%); */
+/* 	color: #ffffff; */
+/* } */
+
+/* .btnRedBlue{ */
+/* 	background: linear-gradient(to bottom, #b90d0d 0%,#610099 100%); */
+/* 	color: #ffffff; */
+/* } */
+
+/* .btnGreen{ */
+/* 	background: linear-gradient(to bottom, #11b76b 0%,#056f41 100%); */
+/* 	color: #ffffff; } */
+
+/* .btnRed{ */
+/* 	background: linear-gradient(to bottom, #d42626 0%,#990000 100%); */
+/* 	color: #ffffff; */
+/* } */
+
+/* .btnGreenXls{ */
+/* 	background: linear-gradient(to bottom, #05c117 0%,#05ae65 100%); */
+/* 	color: #ffffff; */
+/* } */
+
+/* .btnOrange{ */
+/* 	background: linear-gradient(to bottom, #fd0909 0%,#ff7c00 100%); */
+/* 	color: #ffffff; */
+/* } */
+
+/* .btnPdf{	 */
+/* 	background: linear-gradient(to bottom, #a90329 0%,#8f0222 44%); */
+/* 	color: #ffffff; */
+/* } */
+
+/* .textVertical{ */
+/* 	writing-mode: vertical-lr;  */
+/* 	transform: rotate(180deg); */
+/* } */
+
+/* .btnWhiteBlueLow{ */
+/* 	background: #deefff; Old browsers */
+/* 	background: -moz-linear-gradient(top, #deefff 0%, #98bede 100%); FF3.6-15 */
+/* 	background: -webkit-linear-gradient(top, #deefff 0%,#98bede 100%); Chrome10-25,Safari5.1-6 */
+/* 	background: linear-gradient(to bottom, #deefff 0%,#98bede 100%); W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+/* 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#deefff', endColorstr='#98bede',GradientType=0 ); IE6-9 */
+/* 	color: #000000; */
+/* } */
+
+
+	
+/* .z-notification .z-notification-cl,  */
+/*   .z-notification .z-notification-cnt { */
+/*       height: 60px; */
+/*       width: 350px; */
+/*   } */
+  
+
+/* /*Botones para upload*/ */
+/* .z-button .z-button-tl, .z-button */
+/* .z-button-tr, .z-button .z-button-bl, .z-button .z-button-br, .z-button .z-button-tm, .z-button .z-button-bm, .z-button */
+/* .z-button-cl, .z-button .z-button-cr { */
+/* 	background-image:none; */
+/* 	background-color:none; } .z-button .z-button-cm { */
+/* 	background-image:none; */
+/* 	background-color:none; */
+/* 	font-family: 'Orbitron', sans-serif; */
+/* 	color: #ffffff; */
+/* } */
+
+
+
+/* .btnMatrix{ */
+/* 	border-radius: 5px; */
+/* 	cursor:pointer; */
+/* 	padding: 6px; */
+/* 	font-family: 'Orbitron', sans-serif; */
+/* 	font-size: 50%; */
+/* } */
+
+	
+
+
+/* BOTON PARA REMOVER ITEM*/
+
+/* .removeButton { */
+/* 	width: 500px; */
+/* 	height: 500px; */
+/* 	background-image:url('http://www.w3.org/html/logo/downloads/HTML5_Logo_32.png'); */
+/* } */
+/* .removeButton:hover { */
+/* 	background: url('/home/desarrollo9/Imágenes/test.png'); */
+/* } */
+/* .removeButton:active { */
+/* 	position:relative; */
+/* 	top:1px; */
+/* } */

@@ -1,0 +1,300 @@
+<?page contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:w="http://www.zkoss.org/2005/zk/client">
+	<script type="text/javascript">
+
+		var valores = {};
+
+
+		function inicializarThemeColor(jsonResponse) { valores =
+		JSON.parse(jsonResponse);
+		document.getElementById("colorchooser1").value = valores.color1;
+		document.getElementById("colorchooser2").value = valores.color2;
+		}
+
+		function changingColor1() { valores.color1 =
+		document.getElementById("colorchooser1").value;
+		updateDegradado();
+
+		zk.Widget.$('$firedUp').setValue(JSON.stringify(valores));
+		zk.Widget.$('$firedUp').fireOnChange();
+		zk.Widget.$('$listenerDiv').fire('onShowNotification',
+		'PARAMETERS', {toServer: true}); }
+
+		function changingColor2() { valores.color2 =
+		document.getElementById("colorchooser2").value;
+		updateDegradado();
+
+		zk.Widget.$('$firedUp').setValue(JSON.stringify(valores));
+		zk.Widget.$('$firedUp').fireOnChange();
+		zk.Widget.$('$listenerDiv').fire('onShowNotification',
+		'PARAMETERS', {toServer: true}); }
+
+		function updateDegradado(){ valores.colorDegradado =
+		"background: linear-gradient(" + valores.orientacion + ", " +
+		valores.color1 + " " + valores.color1Posicion + "%, " +
+		valores.color2 + " " + valores.color2Posicion + "%);"
+
+
+		}
+
+	</script>
+
+	<style>
+		.centerObject{ text-align: center; margin: 0; position:
+		absolute; top: 70%; -ms-transform: translateY(-50%); transform:
+		translateY(-50%); }
+	</style>
+
+	<window apply="org.zkoss.bind.BindComposer" height="100%"
+		sclass="panelTransparent" id="configuracionzul"
+		viewModel="@id('vm') @init('com.came.control.web.vm.controlpanel.CfgThemeColorVM')">
+
+		<div id="listenerDiv"
+			onShowNotification="@command('updateColorChooser1')" />
+		<textbox id="firedUp" value="" visible="false" />
+
+		<borderlayout>
+			<center>
+				<borderlayout>
+					<west size="50%">
+						<borderlayout>
+							<north size="70%">
+								<borderlayout>
+									<north size="110px">
+										<grid sclass="my-grid">
+											<columns>
+												<column label="Picker"
+													width="90px" />
+												<column
+													label="Posición" />
+												<column label="Código"
+													width="90px" />
+											</columns>
+											<rows>
+												<row>
+													<html>
+														
+														<![CDATA[ <input
+														value="${colorTheme.color1}"
+														type="color"
+														id="colorchooser1"
+														onchange="changingColor1();"
+														width="100%"
+														height="100%"
+														class="btnClear">
+														]]>
+														
+											</html>
+													<slider
+														id="sliderColor1" width="98%"
+														onScroll="@command('changeC1Position')" />
+													<textbox
+														value="@bind(vm.colorTheme.color1)" readonly="true" />
+												</row>
+												<row>
+													<html
+														height="100%">
+														
+														<![CDATA[ <input
+														value="${colorTheme.color2}"
+														type="color"
+														id="colorchooser2"
+														onchange="changingColor2();"
+														width="100%"
+														height="100%"
+														class="btnClear">
+														]]>
+														
+											</html>
+													<slider
+														id="sliderColor2" width="98%"
+														onScroll="@command('changeC2Position')" />
+													<textbox
+														value="@bind(vm.colorTheme.color2)" readonly="true" />
+												</row>
+											</rows>
+										</grid>
+									</north>
+									<center>
+										<div height="100%" width="100%"
+											style="@bind(vm.colorTheme.colorDegradado)" />
+									</center>
+								</borderlayout>
+
+							</north>
+							<center title="Orientación">
+								<borderlayout>
+									<west size="50%">
+										<borderlayout>
+											<north size="50%">
+												<borderlayout>
+													<west size="50%">
+														<div
+															height="100%" width="100%"
+															style="@bind(vm.orientacion1)">
+															<div
+																height="100%" width="100%" sclass="centerObject">
+																<image
+																	width="40%" height="auto"
+																	src="/images/toolbar/arrowdown.png"
+																	onClick="@command('orientacion1')"
+																	style="cursor: pointer;" />
+															</div>
+														</div>
+													</west>
+													<center>
+														<div
+															height="100%" width="100%"
+															style="@bind(vm.orientacion2)">
+															<div
+																height="100%" width="100%" sclass="centerObject">
+																<image
+																	width="40%" height="auto"
+																	src="/images/toolbar/arrowright.png"
+																	onClick="@command('orientacion2')"
+																	style="cursor: pointer;" />
+															</div>
+														</div>
+													</center>
+												</borderlayout>
+											</north>
+											<center>
+												<borderlayout>
+													<west size="50%">
+														<div
+															height="100%" width="100%"
+															style="@bind(vm.orientacion5)">
+															<div
+																height="100%" width="100%" sclass="centerObject">
+																<image
+																	width="40%" height="auto"
+																	src="/images/toolbar/arrowup.png"
+																	onClick="@command('orientacion5')"
+																	style="cursor: pointer;" />
+															</div>
+														</div>
+													</west>
+													<center>
+														<div
+															height="100%" width="100%"
+															style="@bind(vm.orientacion6)">
+															<div
+																height="100%" width="100%" sclass="centerObject">
+																<image
+																	width="40%" height="auto"
+																	src="/images/toolbar/arrowleft.png"
+																	onClick="@command('orientacion6')"
+																	style="cursor: pointer;" />
+															</div>
+														</div>
+													</center>
+												</borderlayout>
+											</center>
+										</borderlayout>
+									</west>
+									<center>
+										<borderlayout>
+											<north size="50%">
+												<borderlayout>
+													<west size="50%">
+														<div
+															height="100%" width="100%"
+															style="@bind(vm.orientacion3)">
+															<div
+																height="100%" width="100%" sclass="centerObject">
+																<image
+																	width="40%" height="auto"
+																	src="/images/toolbar/arrowleftup.png"
+																	onClick="@command('orientacion3')"
+																	style="cursor: pointer;" />
+															</div>
+														</div>
+													</west>
+													<center>
+														<div
+															height="100%" width="100%"
+															style="@bind(vm.orientacion4)">
+															<div
+																height="100%" width="100%" sclass="centerObject">
+																<image
+																	width="40%" height="auto"
+																	src="/images/toolbar/arrowrightup.png"
+																	onClick="@command('orientacion4')"
+																	style="cursor: pointer;" />
+															</div>
+														</div>
+													</center>
+												</borderlayout>
+											</north>
+											<center>
+												<borderlayout>
+													<west size="50%">
+														<div
+															height="100%" width="100%"
+															style="@bind(vm.orientacion7)">
+															<div
+																height="100%" width="100%" sclass="centerObject">
+																<image
+																	width="40%" height="auto"
+																	src="/images/toolbar/arrowleftdown.png"
+																	onClick="@command('orientacion7')"
+																	style="cursor: pointer;" />
+															</div>
+														</div>
+													</west>
+													<center>
+														<div
+															height="100%" width="100%"
+															style="@bind(vm.orientacion8)">
+															<div
+																height="100%" width="100%" sclass="centerObject">
+																<image
+																	width="40%" height="auto"
+																	src="/images/toolbar/arrowrightdown.png"
+																	onClick="@command('orientacion8')"
+																	style="cursor: pointer;" />
+															</div>
+														</div>
+													</center>
+												</borderlayout>
+											</center>
+										</borderlayout>
+									</center>
+								</borderlayout>
+							</center>
+						</borderlayout>
+					</west>
+					<center>
+						<borderlayout>
+							<north size="50%">
+
+							</north>
+							<center>
+
+							</center>
+						</borderlayout>
+					</center>
+				</borderlayout>
+			</center>
+			<south size="40px">
+				<borderlayout>
+					<west border="none" size="50%">
+						<button width="100%" height="100%" label="Nuevo"
+							sclass="btnClear btnAddBorder btnFormatLabel btnNuevo" />
+					</west>
+					<center border="none">
+						<button width="100%" height="100%"
+							label="Guardar" onClick="@command('save')"
+							sclass="btnClear btnAddBorder btnFormatLabel btnGuardar" />
+					</center>
+				</borderlayout>
+			</south>
+		</borderlayout>
+
+
+
+
+	</window>
+
+</zk>

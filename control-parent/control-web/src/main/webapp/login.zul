@@ -1,0 +1,84 @@
+<?page title="Identificacion de usuario" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+<zk xmlns:w="http://www.zkoss.org/2005/zk/client" xmlns:h="http://www.w3.org/1999/xhtml">
+
+	<style src="/styles/web/styleZkComponents.css" />
+	<style src="/styles/web/styleAtributos.css" />
+
+
+	<style src="/vendor/animate/animate.css" />
+	<style src="/vendor/css-hamburgers/hamburgers.min.css" />
+	<style src="/vendor/select2/select2.min.css" />
+	<style src="/vendor/bootstrap/css/bootstrap.min.css" />
+	<style src="/vendor/main.css" />
+	<style src="/vendor/util.css" />
+	
+	<style src="https://www.w3schools.com/w3css/4/w3.css" />
+	
+	
+	<script src="/scripts/modal.js" type="text/javascript" />
+	
+	
+	<script src="/vendor/jquery/jquery-3.2.1.min.js" type="text/javascript" />
+	<script src="/vendor/bootstrap/js/popper.js" type="text/javascript" />
+	<script src="/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript" />
+	<script src="/vendor/select2/select2.min.js" type="text/javascript" />
+	<script src="/vendor/tilt/tilt.jquery.min.js" type="text/javascript" />
+	<script src="/vendor/main.js" type="text/javascript" />
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+	
+	<window height="100%" apply="org.zkoss.bind.BindComposer" vflex="1" width="100%"
+		hflex="1" border="none" id="idLoginMain"
+		viewModel="@id('vm') @init('com.came.control.web.vm.LoginVM')">
+
+		<div sclass="limiter" id="div01">
+			<div sclass="container-login100" id="div02">
+				<div sclass="wrap-login100" id="div03">
+					<div sclass="login100-pic js-tilt" id="div04">
+						<image content="@load(vm.mainImage)" id="imagenProducto" width="100%"/>
+					</div>
+					
+					
+					
+					<window sclass="login100-form validate-form removeBorder" border="none" id="win01">
+						<span sclass="login100-form-title">
+							<label value="Acceso al sistema" sclass="formatTextTitle1"/>
+						</span>
+						
+						
+						
+						
+						<div sclass="wrap-input100 validate-input" id="div05">
+							<textbox sclass="inputLoginFormat formatTextBoxOnFormulario inputLoginOrg" id="txtOrg" onOK="@command('authenticateUser')"
+								value="@bind(vm.rfc)" placeholder="RFC de la Organización" width="100%"/>
+						</div>
+						
+						<div sclass="wrap-input100 validate-input" id="div06">
+							<textbox sclass="inputLoginFormat formatTextBoxOnFormulario inputLoginUsr" id="txtUsr" onOK="@command('authenticateUser')"
+								value="@bind(vm.user)" placeholder="Nombre de usuario"/>
+						</div>
+						
+						<div sclass="wrap-input100 validate-input" id="div07">
+							<textbox sclass="inputLoginFormat formatTextBoxOnFormulario inputLoginPsw" id="txtPass" onOK="@command('authenticateUser')" type="@bind(vm.modusPassword)"
+								value="@bind(vm.password)" placeholder="Contraseña"/>
+						</div>
+						
+						<div sclass="container-login100-form-btn" id="div08">
+							<button sclass="login100-form-btn" label="Autenticar" id="btnAutenticar" onClick="@command('authenticateUser')"/>
+						</div>
+						
+					</window>
+				</div>
+			</div>
+		</div>
+		
+
+
+	</window>
+</zk>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language-addon>
+	<addon-name>ecosmos</addon-name>
+	<language-name>xul/html</language-name>
+
+	<component>
+		<component-name>Zipbox</component-name>
+		<component-class>com.came.control.web.components.Zipbox
+		</component-class>
+		<extends>textbox</extends>
+	</component>
+	
+	<component>
+		<component-name>Phonebox</component-name>
+		<component-class>com.came.control.web.components.Phonebox
+		</component-class>
+		<extends>textbox</extends>
+	</component>
+
+	<component>
+		<component-name>Movilbox</component-name>
+		<component-class>com.came.control.web.components.Movilbox
+		</component-class>
+		<extends>textbox</extends>
+	</component>
+	
+	<component>
+		<component-name>Nssbox</component-name>
+		<component-class>com.came.control.web.components.Nssbox
+		</component-class>
+		<extends>textbox</extends>
+	</component>
+	
+	
+	
+	
+	
+	
+	<component>
+		<component-name>EIN</component-name>
+		<component-class>com.came.control.web.components.EIN</component-class>
+		<extends>textbox</extends>
+	</component>
+
+	<component>
+		<component-name>NPI</component-name>
+		<component-class>com.came.control.web.components.NPI</component-class>
+		<extends>textbox</extends>
+	</component>
+
+	<component>
+		<component-name>Extension</component-name>
+		<component-class>com.came.control.web.components.Extension
+		</component-class>
+		<extends>textbox</extends>
+	</component>
+
+
+	
+
+	<component>
+		<component-name>AlphaNumeric</component-name>
+		<component-class>com.came.control.web.components.AlphaNumeric
+		</component-class>
+		<extends>textbox</extends>
+	</component>
+
+
+
+
+
+	<addon-name>my.extension</addon-name><!-- any name you like -->
+	<javascript src="scripts/maskedinput-1.2.2.min.js" /> <!-- assume you package it as /myjs/foo.js -->
+
+</language-addon>

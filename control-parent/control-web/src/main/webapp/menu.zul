@@ -1,0 +1,55 @@
+<?page contentType="text/html;charset=UTF-8"?>
+<zk xmlns:p="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul 
+http://www.zkoss.org/2005/zul/zul.xsd ">
+	
+	
+	<script>
+<!-- 		$(document).ready(function () { -->
+<!--             $("ul[id*=gnb] li").click(function () { -->
+<!--                 alert($(this).html()); // gets innerHTML of clicked li -->
+<!--                 alert($(this).text()); // gets text contents of clicked li -->
+<!--             }); -->
+<!--         });	 -->
+
+		function selec(obj) {
+		  if (sel!=null) sel.className = '';
+		  obj.className = 'selected';
+		  console.info(obj);    
+		}
+
+		
+	</script>
+
+	<window apply="org.zkoss.bind.BindComposer" height="100%"
+		border="none" id="mainWindowMenu" sclass="panelTransparent"
+		viewModel="@id('vm') @init('com.came.control.web.vm.MenuVM')">
+
+				<tree sclass="treemenu" id="tree" hflex="1" vflex="1" height="100%" model="@load(vm.treeModel)" selectedItem="@bind(vm.menuSelected)" onClick="@command('menuClicked')">
+					<treecols>
+						<treecol hflex="1" label="" />
+					</treecols>
+					<template name="model">
+						<treeitem>
+							<treerow>
+								<treecell image="@load(each.data.icono)" label="@load(each.data.nombre)" tooltiptext="@load(each.data.descripcion)" />
+							</treerow>
+						</treeitem>
+					</template>
+				</tree>
+
+
+		<div class="wrapper" visible="false">
+			<div id="container">
+				<div class="side">
+					<h:h1>Vertical navigation</h:h1>
+					<h:ul id="gnb">
+					</h:ul>
+				</div>
+			</div>
+		</div>
+
+	</window>
+</zk>

@@ -1,0 +1,3 @@
+<jboss-web>
+	<context-root>/control-core</context-root>
+</jboss-web>

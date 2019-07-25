@@ -1,0 +1,18 @@
+<?page contentType="text/html;charset=UTF-8"?>
+<zk xmlns:n="native">
+
+
+
+
+
+	<div apply="org.zkoss.bind.BindComposer" height="100%"
+		id="cagalogozul" vflex="1"
+		viewModel="@id('vm') @init('com.came.control.web.vm.controlpanel.CatalogosVM')">
+
+		
+
+
+
+
+	</div>
+</zk>

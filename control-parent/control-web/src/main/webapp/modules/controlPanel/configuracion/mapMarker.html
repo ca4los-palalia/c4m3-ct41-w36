@@ -1,0 +1,149 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+	    
+	   <style>
+			#map { 
+			    width: 100%;
+			    height: 100%;
+			    box-shadow: 5px 5px 5px #888;
+			}
+		</style>
+	
+		<script type="text/javascript">
+			var myMarker = null;
+			var map = null;
+			//============================
+			var optionsCurrentPosition = {
+				enableHighAccuracy: true,
+				timeout: 5000,
+				maximumAge: 0
+			};
+			
+			function success(pos) {
+				var coordenadas = {
+					lng: pos.coords.longitude,
+					lat: pos.coords.latitude,
+				};
+				
+				var geocodeService = L.esri.Geocoding.geocodeService();
+				geocodeService.reverse().latlng(coordenadas).run(function(error, result) {
+					myMarker.bindPopup(result.address.Match_addr).openPopup();
+				});
+				
+				
+				//========================================================
+				zk.Widget.$('$geoLat').setValue(coordenadas.lat);
+			    zk.Widget.$('$geoLong').setValue(coordenadas.lng);
+			    
+				
+				map = L.map('map').setView([coordenadas.lat, coordenadas.lng], 14);
+				var nzoom = 12;
+				
+				L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="http://www.camesoftware.com/" target="_blank">CameSoftware</a> contributors'
+				}).addTo(map);
+				
+				myMarker = L.marker([coordenadas.lat, coordenadas.lng], {
+				    title: "Coordinates",
+				    alt: "Coordinates",
+				    draggable: true
+				}).addTo(map).on('dragend', function() {
+				    var lat = myMarker.getLatLng().lat.toFixed(8);
+				    var lon = myMarker.getLatLng().lng.toFixed(8);
+				    var czoom = map.getZoom();
+				    if (czoom < 18) {
+				        nzoom = czoom + 2;
+				    }
+				    if (nzoom > 18) {
+				        nzoom = 18;
+				    }
+				    if (czoom != 18) {
+				        map.setView([lat, lon], nzoom);
+				    } else {
+				        map.setView([lat, lon]);
+				    }
+				    
+				    zk.Widget.$('$geoLat').setValue(lat);
+				    zk.Widget.$('$geoLat').fireOnChange();
+				    zk.Widget.$('$geoLong').setValue(lon);
+				    zk.Widget.$('$geoLong').fireOnChange();
+				    
+				    myMarker.bindPopup("<b>Lat: </b> " + lat + "<br /><b>Lon: </b>" + lon).openPopup();
+				});
+			};
+			
+			function error(err) {
+				console.warn('ERROR(' + err.code + '): ' + err.message);
+			};
+			
+			navigator.geolocation.getCurrentPosition(success, error, optionsCurrentPosition);
+			
+			//============================
+			function selectedCityJs(jsonResponse) {
+				var geoSelected = JSON.parse(jsonResponse);
+				updateBindGeoSelected(geoSelected);
+ 				var lat1 = geoSelected.latitud;
+ 				var lng1 = geoSelected.longitud;
+ 				
+				myMarker.closePopup();
+				
+				map.setView([lat1, lng1], 12);
+	            myMarker.setLatLng([lat1, lng1]);
+	            
+	            zk.Widget.$('$geoLat').setValue(lat1);
+			    zk.Widget.$('$geoLat').fireOnChange();
+			    zk.Widget.$('$geoLong').setValue(lng1);
+			    zk.Widget.$('$geoLong').fireOnChange();
+	            
+			    
+			    
+	            myMarker.bindPopup("<b>Lat: </b>" + lat1 + "<br /><b>Lon: </b> " + lng1 + "<br />" + geoSelected.descripcion).openPopup();
+			}
+			
+			function relocalizarMapa(coord) {
+				var coordenadas = {
+					lng: coord.longitude,
+					lat: coord.latitude,
+				};
+			    
+ 				var geocodeService = L.esri.Geocoding.geocodeService();
+				geocodeService.reverse().latlng(coordenadas).run(function(error, result) {
+					myMarker.closePopup();
+					myMarker.bindPopup(result.address.Match_addr).openPopup();
+					
+					var res = JSON.stringify(result.address.Match_addr);
+					
+					map.setView([coordenadas.lat, coordenadas.lng], 18);
+		            myMarker.setLatLng([coordenadas.lat, coordenadas.lng]);
+		            
+		            /*-------------------------------------------------------*/
+				    var array = [];
+				    var i;
+				    for (i = 0; i < 1; i++) {
+						var geo = new Object();
+						geo.latitud = coordenadas.lat;
+						geo.longitud = coordenadas.lng;
+						geo.descripcion = res;
+						array.push(geo);
+					}
+				    zk.Widget.$('$mapTransferTxt').setValue(JSON.stringify(array));
+					zk.Widget.$('$mapTransferTxt').fireOnChange();
+					zk.Widget.$('$listenerSelectCityCurrentLocation').fire('onShowNotification', 'PARAMETERS', { toServer : true });
+					/*-------------------------------------------------------*/
+					
+		            zk.Widget.$('$geoLat').setValue(coordenadas.lat);
+				    zk.Widget.$('$geoLat').fireOnChange();
+				    zk.Widget.$('$geoLong').setValue(coordenadas.lng);
+				    zk.Widget.$('$geoLong').fireOnChange();
+				});
+			}
+	    </script>
+	    
+	</head>
+	
+	<body>
+	    <div id="map"></div>
+	</body>
+
+</html>

@@ -1,0 +1,58 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<?script type="text/javascript" src="/scripts/watermarks.js"?>
+
+	<window apply="org.zkoss.bind.BindComposer"
+		id="buscadorOficinasMD" onCancel="@command('closeDialog')"
+		viewModel="@id('vm') @init('com.came.control.web.vm.controlpanel.BuscadorOficinasVM')"
+		width="50%" height="80%" position="center,center" closable="true">
+
+		<borderlayout>
+			<center border="none">
+				<window vflex="1" width="100%" height="100%" border="none">
+					<listbox model="@load(vm.oficinasOrg)" vflex="1" sclass="listboxBuscador"
+						selectedItem="@bind(vm.oficinaSelected)">
+
+						<listhead>
+							<listheader label="Nombre" sort="auto(nombre)"/>
+							<listheader label="Latitud" sort="auto(geolocalizacion.latitud)"/>
+							<listheader label="Longitud" sort="auto(geolocalizacion.longitud)"/>
+							<listheader label="Direccion" sort="auto(direccion.dirComplete)"/>
+						</listhead>
+						<template name="model">
+							<listitem onDoubleClick="@command('transfer')">
+								<listcell
+									label="@bind(each.nombre)" />
+								<listcell
+									label="@bind(each.geolocalizacion.latitud)" />
+								<listcell
+									label="@bind(each.geolocalizacion.longitud)" />
+								<listcell
+									label="@bind(each.direccion.dirComplete)" />
+									
+							</listitem>
+						</template>
+					</listbox>
+				</window>
+			</center>
+			<south size="40px" border="none">
+				<borderlayout>
+					<west size="50%" border="none">
+						<button width="100%" height="100%"
+							label="Cancelar"
+							onClick="@command('closeDialog')"
+							sclass="btnClear btnAddBorder btnFormatLabel btnCancel"/>
+
+					</west>
+					<center border="none">
+						<button width="100%" height="100%"
+							label="Aceptar"
+							onClick="@command('transfer')"
+							sclass="btnClear btnAddBorder btnFormatLabel btnAceptar" />
+
+					</center>
+				</borderlayout>
+			</south>
+		</borderlayout>
+	</window>
+</zk>

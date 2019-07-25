@@ -1,0 +1,108 @@
+<?page title="Home" contentType="text/html;charset=UTF-8" id="P"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="com.came.control.web.IntegrityChecker" BENUTZER="${ctrlUtilsSession}"?>
+<?link  type="image/x-icon" href="/images/toolbar/cost32.png" rel="shortcut icon"?>
+
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:w="http://www.zkoss.org/2005/zk/client">
+
+	<style>
+		div.my-grid { background:transparent; border:0px } .my-grid
+		tr.z-row td.z-row-inner { background:transparent; border:0px }
+		.my-grid tr.z-grid-odd td.z-row-inner, .my-grid tr.z-grid-odd {
+		background:transparent; border:0px; background-color:transparent
+		} .my-grid div.z-grid-body { background:transparent }
+	</style>
+
+	<style src="https://www.w3schools.com/w3css/4/w3.css" />
+	<style src="/styles/web/styleAtributos.css"/>
+	
+	<style src="/styles/web/styleZkComponents.css" />
+	<style src="/styles/web/styleMenu.css" />
+	<style src="/styles/web/styleButtons.css" />
+	<style src="/styles/web/styleBussy.css" />
+	<style src="/styles/web/styleMessagebox.css" />
+	<style src="/styles/web/styleCombobox.css" />
+	<style src="/styles/web/styleNavbar.css" />
+	<style src="/styles/web/styleCheckbox.css" />
+	<style src="/styles/web/styleDatebox.css" />
+	<style src="/styles/web/styleListBox2.css" />
+	<script src="/scripts/leaflet.js" type="text/javascript" />
+	<script src="/scripts/esri-leaflet.js" type="text/javascript" />
+	<script src="/scripts/esri-leaflet-geocoder.js"
+		type="text/javascript" />
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript" />
+	<script src="/scripts/navbar.js" type="text/javascript" />
+
+
+	<window apply="org.zkoss.bind.BindComposer" height="100%" width="100%"
+		id="homeWindow" style="@bind(vm.colorTheme.colorDegradado)"
+		border="none"
+		viewModel="@id('vm') @init('com.came.control.web.vm.HomeVM')">
+
+		<borderlayout sclass="panelTransparent" id="blMain" width="100%">
+			<west size="12%" flex="true" title="Menú"
+				sclass="panelTransparent" splittable="true"
+				collapsible="true" border="none">
+				<borderlayout sclass="backgroudMenu">
+					<north size="20%" sclass="panelTransparent"
+						border="none">
+						<borderlayout sclass="panelTransparent">
+							<north size="60px"
+								style="text-align: center;" sclass="panelTransparent"
+								border="none">
+								<label sclass="enterpriceFormat"
+									value="@load(vm.organizacion.razonSocial)" />
+							</north>
+							<center style="text-align: center;"
+								sclass="panelTransparent" border="none">
+								<div sclass="centerimg" height="100%">
+									<image id="imagen"
+										sclass="resizeImagen" src="/images/header/userAvatar.png" />
+
+								</div>
+							</center>
+							<south style="text-align: center;"
+								size="60px" sclass="panelTransparent" border="none">
+								<vlayout>
+									<label
+										value="@init(vm.usuario.dekodifikatorUsr)" sclass="usrFormat" />
+									<label
+										value="@init(vm.usuario.rol.nombre)" sclass="puestoFormat" />
+								</vlayout>
+							</south>
+						</borderlayout>
+					</north>
+					<center sclass="panelTransparent" border="none">
+						<borderlayout sclass="panelTransparent">
+							<center sclass="panelTransparent" border="none">
+								<div id="menu" height="100%" sclass="panelTransparent">
+									<include src="/menu.zul" />
+								</div>
+							</center>
+							<south size="40px" sclass="panelTransparent" border="none">
+								<button width="100%" height="100%" sclass="btnlogout" label="Cerrar sesión" onClick="@command('logOut')"/>
+							</south>
+						</borderlayout>
+						
+					</center>
+				</borderlayout>
+
+			</west>
+			<center border="none" flex="true">
+				<div id="content" sclass="bcgrdPanelTrabajo">
+					<include src="/inicio.zul"/>
+				</div>
+			</center>
+
+		</borderlayout>
+
+
+	</window>
+</zk>
+
+
+
+

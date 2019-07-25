@@ -1,0 +1,42 @@
+<?page title="Information" contentType="text/html;charset=UTF-8"?>
+
+
+
+<zk>
+	<window apply="org.zkoss.bind.BindComposer" id="informationMD"
+		width="30%" height="25%" position="center,center" sclass="panelInformation"
+		viewModel="@id('vm') @init('com.came.control.web.vm.modal.InformationVM')">
+
+		<borderlayout sclass="panelTransparent" id="informationMDblPanel">
+			<center title="@bind(vm.messageControl.title)" border="none"
+				sclass="informationBorderLayout panelTransparent" vflex="1">
+				<borderlayout sclass="panelTransparent">
+					<west size="25%" sclass="panelTransparent"
+						border="none">
+
+						<div
+							style="position: relative; top: 50%; transform: translateY(-50%); padding-right: 5%; padding-left: 5%; padding-top: 5%; padding-down: 5%; border-width: 50px;">
+							<image src="/images/modal/warning.png"
+								width="80%" height="80%" />
+						</div>
+
+					</west>
+					<center
+						sclass="panelTransparent informationBorderLayout" border="none">
+						<textbox width="100%" height="100%" multiline="true" readonly="true" value="@bind(vm.messageControl.mensaje)" sclass="panelTransparent formatTextMessage"/>
+					</center>
+				</borderlayout>
+
+
+			</center>
+			<south size="37px" border="none" sclass="panelTransparent"
+				style="padding-right: 5px; padding-left: 5px;" id="informationMDSouth">
+				<button height="90%" width="100%"
+					onClick="@command('transfer')" label="Aceptar"
+					sclass="btn btn-secondary" id="informationMDBtnAcept"/>
+			</south>
+		</borderlayout>
+
+
+	</window>
+</zk>

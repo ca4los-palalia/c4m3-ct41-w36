@@ -1,0 +1,155 @@
+<?page contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:w="http://www.zkoss.org/2005/zk/client">
+	
+	<window apply="org.zkoss.bind.BindComposer" height="100%"
+		sclass="panelTransparent" id="zhZul"
+		viewModel="@id('vm') @init('com.came.control.web.vm.controlpanel.AsistenciaVM')">
+
+
+		<borderlayout sclass="panelTransparent blHeaderMenuSelected">
+			<north size="100%" border="none" sclass="panelTransparent"
+				title="@bind(vm.moduloSession.nombre)">
+
+				<borderlayout
+					sclass="panelTransparent detailBorderLayout">
+
+					<center border="none" sclass="panelTransparent">
+						<borderlayout sclass="panelTransparent">
+							<west size="50%" sclass="panelTransparent"
+								border="none">
+								<borderlayout sclass="panelTransparent">
+									<north sclass="panelTransparent" border="none">
+										<grid sclass="my-grid panelTransparent"
+											width="100%">
+											<columns>
+												<column width="30px" />
+												<column />
+												<column width="20px"/>
+												<column />
+												<column width="30%" />
+											</columns>
+											<rows>
+												<row>
+													<label
+														sclass="titleFormat formatLabelOnFormulario" value="De:" />
+													<datebox value="@bind(vm.fechaInicio)" readonly="true"
+														width="100%" format="yyyy-MM-dd HH:mm:ss"/>
+													<label
+														sclass="titleFormat formatLabelOnFormulario" value="A:" />
+													<datebox readonly="true" value="@bind(vm.fechaFin)"
+														width="100%" format="yyyy-MM-dd HH:mm:ss"/>
+													<button width="100%"
+														height="100%" label="Buscar"
+														sclass="btnClear btnAddBorder btnFormatLabel btnGuardar" />
+												</row>
+											</rows>
+										</grid>
+									</north>
+									<center border="none" sclass="panelTransparent detailBorderLayout" title="Asistencias">
+										<window vflex="1" width="100%"
+											height="100%" border="none">
+											<listbox
+												model="@load(vm.asistencias)" id="asistenciasListbox"
+												vflex="1" sclass="listboxBuscador"
+												emptyMessage="No se han registrado incidencias"
+												selectedItem="@bind(vm.selectedAsistencia)"
+												onSelect="@command('showIncidencias')">
+
+												<listhead>
+													<listheader
+														label="ID" width="50px" sort="auto(idAsistencia)" />
+													<listheader
+														label="Usuario" sort="auto(usuario.nombreUsuario)" />
+													<listheader
+														label="Colaborador"
+														sort="auto(usuario.datosGenerales.persona.nombreCompleto)" />
+													<listheader
+														label="Fecha" sort="auto(fechaActualizacion)" />
+												</listhead>
+												<template
+													name="model">
+													<listitem>
+														<listcell
+															label="@bind(each.idAsistencia)" />
+														<listcell
+															label="@bind(each.usuario.dekodifikatorUsr)" />
+														<listcell
+															label="@bind(each.usuario.datosGenerales.persona.nombreCompleto)" />
+														<listcell
+															label="@bind(each.fechaActualizacion)" />
+													</listitem>
+												</template>
+											</listbox>
+										</window>
+									</center>
+								</borderlayout>
+
+							</west>
+							<center
+								sclass="ctrlButtonsCheckBorderLayout" title=" Incidencias"
+								border="none">
+								<window vflex="1" width="100%"
+									height="100%" border="none">
+									<listbox
+										model="@load(vm.usuarioIncidencias)" id="incidenciasListbox"
+										vflex="1" sclass="listboxBuscador"
+										emptyMessage="No se han registrado incidencias"
+										selectedItem="@bind(vm.selectedUsuarioIncidencia)">
+
+										<listhead>
+											<listheader label="Clave"
+												sort="auto(incidencia.clave)" width="50px" />
+											<listheader label="Nombre"
+												sort="auto(incidencia.nombre)" />
+											<listheader
+												label="Descripcion" sort="auto(incidencia.descripcion)" />
+											<listheader
+												label="Descuento"
+												sort="auto(incidencia.descuentoPorcentaje)" />
+											<listheader label="Fecha"
+												sort="auto(fecha)" width="120px" />
+										</listhead>
+										<template name="model">
+											<listitem
+												style="@bind(each.incidencia.style)">
+												<listcell
+													label="@bind(each.incidencia.clave)" />
+												<listcell
+													label="@bind(each.incidencia.nombre)" />
+												<listcell
+													label="@bind(each.incidencia.descripcion)" />
+												<listcell
+													label="@bind(each.incidencia.descuentoPorcentaje)" />
+												<listcell
+													label="@bind(each.fecha)" />
+											</listitem>
+										</template>
+									</listbox>
+								</window>
+							</center>
+						</borderlayout>
+
+
+					</center>
+					<south size="40px">
+						<borderlayout>
+							<west border="none" size="50%">
+								<button width="100%" height="100%"
+									label="Registrar asistencias"
+									sclass="btnClear btnAddBorder btnFormatLabel btnNuevo"
+									onClick="@command('agregarIncidenciaManaul')" />
+							</west>
+							<center border="none">
+								<button width="100%" height="100%"
+									label="Guardar" visible="false"
+									sclass="btnClear btnAddBorder btnFormatLabel btnGuardar"/>
+							</center>
+						</borderlayout>
+					</south>
+				</borderlayout>
+
+			</north>
+		</borderlayout>
+	</window>
+</zk>

@@ -1,0 +1,74 @@
+<?page contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:w="http://www.zkoss.org/2005/zk/client">
+
+	<script src="/scripts/mapLocator.js" type="text/javascript" />
+
+	<window id="mapMakerLocatorZul" apply="org.zkoss.bind.BindComposer" height="100%"
+		sclass="panelTransparent" viewModel="@id('vm') @init('com.came.control.web.vm.controlpanel.MapMakerSelectedVM')">
+		<textbox id="mapTransferTxt" value="" visible="false" />
+		
+		<div id="listenerDiv"
+			onShowNotification="@command('listenerLocation')" />
+		<div id="listenerSelectCity"
+			onShowNotification="@command('pushSelectedCity')" />
+		<div id="listenerSelectCityCurrentLocation"
+			onShowNotification="@command('pushSelectedCityCurrentLocation')" />
+			
+		<div id="listenerUpdateMaker"
+			onShowNotification="@command('pushUpdateMaker')" />
+		<borderlayout sclass="panelTransparent detailBorderLayout">
+			<north title="Geolocalización" sclass="panelTransparent" vflex="1" splittable="true">
+				<div class="formularContainer">
+					<div sclass="formularSection50Procent">
+
+						<vlayout>
+							<label value="Buscador de direcciones:"
+								sclass="formatLabelOnFormulario" />
+							<hlayout width="100%">
+								<textbox id="finderAddress" width="100%"
+									sclass="w3-input formatTextBoxOnFormulario"
+									w:onOk="buscadorDireccion();" />
+								<button width="40px" height="40px"
+									label="" tooltiptext="Buscar geolocalización de la dirección"
+									w:onClick="buscadorDireccion();"
+									sclass="w3-input formatTextBoxOnFormulario btnClear btnFinder" />
+								<button width="40px" height="40px"
+									label="" tooltiptext="Current location"
+									w:onClick="reload();"
+									sclass="w3-input formatTextBoxOnFormulario btnClear btnLocation" />
+							</hlayout>
+						</vlayout>
+					</div>
+
+					<div sclass="formularSection50Procent">
+						<div class="formularContainer">
+
+							<div sclass="formularSection50Procent">
+								<vlayout>
+									<label value="Latitud:"
+										sclass="formatLabelOnFormulario labelRequiredRed" />
+									<doublebox id="geoLat" width="100%" readonly="true"
+										sclass="w3-input formatTextBoxOnFormulario" />
+								</vlayout>
+							</div>
+
+							<div sclass="formularSection50Procent">
+								<vlayout>
+									<label value="Longitud:"
+										sclass="formatLabelOnFormulario labelRequiredRed" />
+									<doublebox id="geoLong" width="100%" readonly="true"
+										sclass="w3-input formatTextBoxOnFormulario" />
+								</vlayout>
+							</div>
+						</div>
+					</div>
+				</div>
+			</north>
+			<center sclass="panelTransparent" border="none">
+				<include id="includeMap"
+					src="/modules/controlPanel/configuracion/mapMarker.html" />
+			</center>
+		</borderlayout>
+	</window>
+</zk>
