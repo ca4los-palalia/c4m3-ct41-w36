@@ -105,10 +105,19 @@
 
 /* Altura y formato de la fuente de la celda */
 .listboxBuscador .z-listfooter-cnt, .listboxBuscador .z-listcell-cnt, .listboxBuscador .z-listheader-cnt {
-	font-size: 90%;
-	font-weight: bolder;
-	font-family: 'Advent Pro', sans-serif;
+	font-size: var(--listboxHeaderFontSize);
+	font-weight: var(--listboxHeaderFontWeight);
+	font-family: var(--listboxFontFamily);
 /* 	height: 30px; */
+	color: var(--listboxHeaderFontColor);
+	
+	text-align: center;
+}
+
+.listboxBuscador .z-listcell-cnt {
+	font-size: var(--listboxCellFontSize);
+	
+	font-family: var(--listboxFontFamily);
 	color: var(--listboxCellFontColor);
 	text-align: justify;
 }
@@ -136,7 +145,13 @@
 	filter: var(--listboxAuxheadBckGrndColorDegr-filter);
 }
 
-
+.listboxBuscadorFormatFontHeader{
+	font-size: var(--listboxHeaderFontSize);
+	font-weight: var(--listboxHeaderFontWeight);
+	font-family: var(--listboxFontFamily);
+	color: var(--listboxHeaderFontColor);
+	text-align: center;
+}
 
 
 

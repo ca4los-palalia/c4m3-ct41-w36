@@ -58,7 +58,7 @@ public class ConstAtributos {
 	public final static String MODULO_CHECADOR = "Checador";
 	public final static String MODULO_CATALOGOS = "Catalogos";
 	public final static String MODULO_CONFIGURACION = "Configuracion";
-	public final static String MODULO_COLABORADORES = "Colaboradores";
+	public final static String MODULO_TRABAJADORES = "Trabajadores";
 	public final static String ZONA_HORARIA = "zonaHoraria";
 
 	public final static String PUEBLA = "Puebla";

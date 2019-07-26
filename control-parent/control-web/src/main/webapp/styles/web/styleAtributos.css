@@ -50,7 +50,12 @@
 	--listboxRowSelectedBckGrndColorSolid-linear-gradient: linear-gradient(to bottom, rgba(191,210,85,1) 0%,rgba(142,185,42,1) 50%,rgba(114,170,0,1) 51%,rgba(158,203,45,1) 100%);
 	--listboxRowSelectedBckGrndColorSolid-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfd255', endColorstr='#9ecb2d',GradientType=0 );
 	
+	--listboxFontFamily: 'Advent Pro', sans-serif;
+	--listboxHeaderFontColor: #ffffff;
+	--listboxHeaderFontWeight: bolder;
+	--listboxHeaderFontSize: 120%;
 	--listboxCellFontColor: #3b3b3b;
+	--listboxCellFontSize: 110%;
 }
 
 .resizeImagen{

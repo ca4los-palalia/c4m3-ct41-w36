@@ -94,6 +94,20 @@ public class LoginMetaclas extends LayerWebOperaciones {
 			return ctrlMessage;
 		}
 		
+		if(!usr.getDekodifikatorPass().equals(password)){
+			ctrlMessage.setIdError(ConstAtributos.ESTATUS_WARNING);
+			ctrlMessage.setMensaje("La contraseña no coincide. (<b>" + password + "</b>)");
+			ctrlMessage.setComponentZk(txtPass);
+			return ctrlMessage;
+		}
+		
+		if(!usr.getDekodifikatorUsr().equals(user)) {
+			ctrlMessage.setIdError(ConstAtributos.ESTATUS_WARNING);
+			ctrlMessage.setMensaje("El nombre de usuario no coincide. (<b>" + user + "</b>)");
+			ctrlMessage.setComponentZk(txtPass);
+			return ctrlMessage;
+		}
+		
 		if(!usr.isActivo()) {
 			ctrlMessage.setIdError(ConstAtributos.ESTATUS_WARNING);
 			ctrlMessage.setMensaje("El usuario <b>" + user + "</b> esta <b>desactivado</b>");

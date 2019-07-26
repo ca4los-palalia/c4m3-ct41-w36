@@ -22,8 +22,22 @@
 					</columns>
 					<rows>
 						<row>
+							<label value="Habilitar validacion de cercania a la oficina:"/>
+							<checkbox checked="@bind(vm.configureAccuracy.habilitarValidacion)" label="Activar" onCheck="@command('commandChecked')"/>
+<!-- 							<html> -->
+<!-- 								<![CDATA[ -->
+<!-- 									<div class="checkbox"> -->
+<!-- 										<label> -->
+<!-- 											<input type="checkbox" value="${vm.configureAccuracy.habilitarValidacion}" /> -->
+<!-- 											<i class="input-helper"></i> -->
+<!-- 											<span>Activar</span> -->
+<!-- 										</label> -->
+<!-- 									</div> -->
+<!-- 								]]>											 -->
+<!-- 							</html> -->
+							
 							<label value="leaflet accuracy (mts):"/>
-							<intbox width="100%" value="@bind(vm.configureAccuracy.metros)"/>
+							<intbox width="100%" value="@bind(vm.configureAccuracy.metros)" disabled="@bind(vm.configureAccuracy.disabledTextbox)"/>
 							<label value="Habilitar descripcion de incidencias en mensajes"/>
 							<checkbox checked="@bind(vm.configureHabilitarFuncion.activar)"/>
 							<label value="Hora de corte de incidencias:"/>

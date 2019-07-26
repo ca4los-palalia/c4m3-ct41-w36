@@ -51,6 +51,7 @@ public class CfgMysql {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("net.sourceforge.jtds.jdbc.Driver");
 		dataSource.setUrl("jdbc:jtds:sqlserver://localhost:1433/control;instance=SISTEMAS");
+		//dataSource.setUrl("jdbc:jtds:sqlserver://localhost:1433/control");
 		dataSource.setUsername("ctrladmin");
 		dataSource.setPassword("ctrladmin");
 		

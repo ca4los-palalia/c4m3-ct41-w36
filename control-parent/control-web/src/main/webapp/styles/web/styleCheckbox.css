@@ -1,3 +1,5 @@
+@import "styleAtributos.css";
+
 .checkbox {
   position: relative;
   margin-bottom: 20px;
@@ -72,15 +74,8 @@
 
 .z-checkbox-cnt{
 	font-family: 'Gugi';
-	color: white;
-	font-size: 90%;
+	color: var(--listboxCellFontColor);
+	font-size: 100%;
 	font-weight: bolder;
 }
 
-
-.z-checkbox-toggle {
-    background-color: red;
-}
-.z-checkbox-toggle {
-    background-color: green;
-}

@@ -249,7 +249,7 @@ public class InitialData {
 				List<Modulo> modulosTest1 = new ArrayList<Modulo>();
 				modulosTest1.add(moduloService.getByNombre(ConstAtributos.MODULO_CONFIGURACION));
 				modulosTest1.add(moduloService.getByNombre(ConstAtributos.MODULO_CHECADOR));
-				modulosTest1.add(moduloService.getByNombre(ConstAtributos.MODULO_COLABORADORES));
+				modulosTest1.add(moduloService.getByNombre(ConstAtributos.MODULO_TRABAJADORES));
 				modulosTest1.add(moduloService.getByNombre(ConstAtributos.MODULO_CATALOGOS));
 				builder.asignarModulos2Usr(usr, modulosTest1);
 			}
@@ -327,12 +327,12 @@ public class InitialData {
 			item = new Modulo();
 			item.setDescripcion("CRUD para usuarios y asignacion de permisos");
 			item.setIcono("/images/menu/employer16.png");
-			item.setNombre(ConstAtributos.MODULO_COLABORADORES);
+			item.setNombre(ConstAtributos.MODULO_TRABAJADORES);
 			item.setRuta("");
 			
 			subModulos = new ArrayList<Modulo>();
 			subModuloItem = new Modulo();
-			subModuloItem.setDescripcion("Administar altas, bajas y modificaciones de colaboradores");
+			subModuloItem.setDescripcion("Administar altas, bajas y modificaciones de trabajadores");
 			subModuloItem.setIcono("/images/menu/employer16.png");
 			subModuloItem.setNombre("Administrar");
 			subModuloItem.setRuta("/modules/controlPanel/usuariosAdmin.zul");
@@ -372,7 +372,7 @@ public class InitialData {
 			subModuloItem = new Modulo();
 			subModuloItem.setDescripcion("Administrar Roles de usuarios");
 			subModuloItem.setIcono("/images/menu/rol16.png");
-			subModuloItem.setNombre("Roles");
+			subModuloItem.setNombre("Rol de usuario");
 			subModuloItem.setRuta("/modules/controlPanel/configuracion/roles.zul");
 			subModulos.add(subModuloItem);
 			

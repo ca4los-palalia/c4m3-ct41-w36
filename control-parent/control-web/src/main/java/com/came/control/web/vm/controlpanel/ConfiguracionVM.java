@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
+import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.select.annotation.VariableResolver;
 import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zkplus.spring.DelegatingVariableResolver;
@@ -40,8 +41,10 @@ public class ConfiguracionVM extends LayerWebOperaciones {
 		
 		gson = new Gson();
 		cfgAccuracy = configuracionRest.getByClaveAndOrg(ConstAtributos.CFG_ACCURACY, organizacion);
-		if(cfgAccuracy != null)
+		if(cfgAccuracy != null) {
 			configureAccuracy = gson.fromJson(cfgAccuracy.getValor(), ConfigureAccuracy.class);
+			configureAccuracy.setDisabledTextbox(true);
+		}	
 		cfgHabilita = configuracionRest.getByClaveAndOrg(ConstAtributos.CFG_MSG_INCIDENCIAS, organizacion);
 		if(cfgHabilita != null)
 			configureHabilitarFuncion = gson.fromJson(cfgHabilita.getValor(), ConfigureHabilitarFuncion.class);
@@ -74,6 +77,12 @@ public class ConfiguracionVM extends LayerWebOperaciones {
 		} else {
 			Clients.showNotification(validador, Clients.NOTIFICATION_TYPE_WARNING, null, null, 0);
 		}
+	}
+	
+	@Command
+	@NotifyChange({"configureAccuracy"})
+	public void commandChecked() {
+		configureAccuracy.setDisabledTextbox(!configureAccuracy.isHabilitarValidacion());
 	}
 	
 	private String validador() {
@@ -109,5 +118,5 @@ public class ConfiguracionVM extends LayerWebOperaciones {
 	public void setConfigureTimer(ConfigureTimer configureTimer) {
 		this.configureTimer = configureTimer;
 	}
-
+	
 }

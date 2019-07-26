@@ -7,23 +7,10 @@
 		viewModel="@id('vm') @init('com.came.control.web.vm.colaboradores.AgregaIncidenciaManualVM')"
 		width="100%" height="100%" position="center,center" closable="true">
 
-		<!-- 		<style> -->
-		<!-- 			@import url('https://fonts.googleapis.com/css?family=Orbitron'); -->
-		<!-- 			.btnFormat{ border-radius: 5px; cursor:pointer; padding: 6px; -->
-		<!-- 			font-family: 'Orbitron', sans-serif; } -->
-
-		<!-- 			.btnGreen{ background: linear-gradient(to bottom, #11b76b -->
-		<!-- 			0%,#056f41 100%); color: #ffffff; } -->
-
-		<!-- 			.btnRed{ background: -->
-		<!-- 			linear-gradient(to bottom, #d42626 0%,#990000 100%); color: -->
-		<!-- 			#ffffff; } -->
-		<!-- 		</style> -->
-
-		<borderlayout style="background: #0F0F0F;">
-			<north size="220px" sclass="panelTransparent">
+		<borderlayout>
+			<north size="270px" sclass="backgroudMenu">
 				<vlayout>
-					<grid sclass="my-grid panelTransparent" width="100%">
+					<listbox sclass="listboxBuscador">
 						<auxhead>
 							<auxheader colspan="1" sclass="listboxBuscadorHeader">
 								<vlayout>
@@ -35,7 +22,7 @@
 										</columns>
 										<rows>
 											<row>
-												<label sclass="titleFormat formatLabelOnFormulario" value="Fecha Registro:" />
+												<label sclass="listboxBuscadorFormatFontHeader" value="Fecha Registro:" />
 												<datebox width="100%" value="@bind(vm.capturador.fechaRegistro)" readonly="true" format="yyyy-MM-dd HH:mm:ss"/>
 											</row>
 										</rows>
@@ -44,115 +31,70 @@
 							</auxheader>
 							<auxheader colspan="2" sclass="listboxBuscadorHeader">
 								<label
-									sclass="titleFormat formatLabelOnFormulario" value="@bind(vm.capturador.lunes.tagDay)" />
+									sclass="listboxBuscadorFormatFontHeader" value="@bind(vm.capturador.lunes.tagDay)" />
 							</auxheader>
 							<auxheader colspan="2" sclass="listboxBuscadorHeader">
 								<label
-									sclass="titleFormat formatLabelOnFormulario" value="@bind(vm.capturador.martes.tagDay)" />
+									sclass="listboxBuscadorFormatFontHeader" value="@bind(vm.capturador.martes.tagDay)" />
 							</auxheader>
 							<auxheader colspan="2" sclass="listboxBuscadorHeader">
 								<label
-									sclass="titleFormat formatLabelOnFormulario" value="@bind(vm.capturador.miercoles.tagDay)" />
+									sclass="listboxBuscadorFormatFontHeader" value="@bind(vm.capturador.miercoles.tagDay)" />
 							</auxheader>
 							<auxheader colspan="2" sclass="listboxBuscadorHeader">
 								<label
-									sclass="titleFormat formatLabelOnFormulario" value="@bind(vm.capturador.jueves.tagDay)" />
+									sclass="listboxBuscadorFormatFontHeader" value="@bind(vm.capturador.jueves.tagDay)" />
 							</auxheader>
 							<auxheader colspan="2" sclass="listboxBuscadorHeader">
 								<label
-									sclass="titleFormat formatLabelOnFormulario" value="@bind(vm.capturador.viernes.tagDay)"/>
+									sclass="listboxBuscadorFormatFontHeader" value="@bind(vm.capturador.viernes.tagDay)"/>
 							</auxheader>
 							<auxheader colspan="2" sclass="listboxBuscadorHeader">
 								<label
-									sclass="titleFormat formatLabelOnFormulario" value="@bind(vm.capturador.sabado.tagDay)" />
+									sclass="listboxBuscadorFormatFontHeader" value="@bind(vm.capturador.sabado.tagDay)" />
 							</auxheader>
 							<auxheader colspan="2" sclass="listboxBuscadorHeader">
 								<label
-									sclass="titleFormat formatLabelOnFormulario" value="@bind(vm.capturador.domingo.tagDay)" />
+									sclass="listboxBuscadorFormatFontHeader" value="@bind(vm.capturador.domingo.tagDay)" />
 							</auxheader>
 						</auxhead>
-						<columns>
-							<column sclass="listboxBuscadorHeader" width="270px">
-								<label
-									sclass="titleFormat formatLabelOnFormulario" value="Colaborador" />
-							</column>
 							
-							<column sclass="listboxBuscadorHeader">
-								<label
-									sclass="titleFormat formatLabelOnFormulario" value="Horas" />
-							</column>
-							<column sclass="listboxBuscadorHeader">
-								<label
-									sclass="titleFormat formatLabelOnFormulario" value="Incidencia:" />
-							</column>
-							
-							<column sclass="listboxBuscadorHeader">
-								<label
-									sclass="titleFormat formatLabelOnFormulario" value="Horas" />
-							</column>
-							<column sclass="listboxBuscadorHeader">
-								<label
-									sclass="titleFormat formatLabelOnFormulario" value="Incidencia" />
-							</column>
-							
-							<column sclass="listboxBuscadorHeader">
-								<label
-									sclass="titleFormat formatLabelOnFormulario" value="Horas" />
-							</column>
-							<column sclass="listboxBuscadorHeader">
-								<label
-									sclass="titleFormat formatLabelOnFormulario" value="Incidencia:" />
-							</column>
-							<column sclass="listboxBuscadorHeader">
-								<label
-									sclass="titleFormat formatLabelOnFormulario" value="Horas:" />
-							</column>
-							<column sclass="listboxBuscadorHeader">
-								<label
-									sclass="titleFormat formatLabelOnFormulario" value="Incidencia:" />
-							</column>
-							<column sclass="listboxBuscadorHeader">
-								<label
-									sclass="titleFormat formatLabelOnFormulario" value="Horas:" />
-							</column>
-							<column sclass="listboxBuscadorHeader">
-								<label
-									sclass="titleFormat formatLabelOnFormulario" value="Incidencia:" />
-							</column>
-							<column sclass="listboxBuscadorHeader">
-								<label
-									sclass="titleFormat formatLabelOnFormulario" value="Horas:" />
-							</column>
-							<column sclass="listboxBuscadorHeader">
-								<label
-									sclass="titleFormat formatLabelOnFormulario" value="Incidencia:" />
-							</column>
-							<column sclass="listboxBuscadorHeader">
-								<label
-									sclass="titleFormat formatLabelOnFormulario" value="Horas:" />
-							</column>
-							<column sclass="listboxBuscadorHeader">
-								<label
-									sclass="titleFormat formatLabelOnFormulario" value="Incidencia:" />
-							</column>
-						</columns>
-						<rows>
-							<row>
+						<listhead>
+							<listheader label="Colaborador" width="270px"/>
+							<listheader label="Horas"/>
+							<listheader label="Incidencia"/>
+							<listheader label="Horas"/>
+							<listheader label="Incidencia"/>
+							<listheader label="Horas"/>
+							<listheader label="Incidencia"/>
+							<listheader label="Horas"/>
+							<listheader label="Incidencia"/>
+							<listheader label="Horas"/>
+							<listheader label="Incidencia"/>
+							<listheader label="Horas"/>
+							<listheader label="Incidencia"/>
+							<listheader label="Horas"/>
+							<listheader label="Incidencia"/>
+						</listhead>
+						<listitem>
+							<listcell>
 								<grid sclass="my-grid panelTransparent" width="100%">
 									<columns>
 										<column />
 										<column width="35px" align="left"/>
 									</columns>
 									<rows>
-										<row> 
-											<textbox width="100%" value="@bind(vm.capturador.usuario.datosGenerales.persona.nombreCompleto)" readonly="true"/>			
+										<row>
+											<textbox width="100%" value="@bind(vm.capturador.usuario.datosGenerales.persona.nombreCompleto)" readonly="true" sclass="w3-input formatTextBoxOnFormulario"/>			
 											<button image="/images/toolbar/searchNew16.png" width="100%" sclass="btnClear" tooltiptext="Buscar colaborador" onClick="@command('clickedBuscador')" id="btnFindUsr"/>
 										</row>
 									</rows>
 								</grid>
-								
-								
-								<intbox width="100%" value="@bind(vm.capturador.lunes.hrs)" maxlength="2"  placeholder="hrs trabajadas" id="intLunes" disabled="@bind(vm.capturador.lunes.vmDisabled)" onOK="@command('agregarRegistro')"/>
+							</listcell>
+							<listcell	>
+								<intbox width="100%" value="@bind(vm.capturador.lunes.hrs)" maxlength="2"  placeholder="hrs trabajadas" id="intLunes" disabled="@bind(vm.capturador.lunes.vmDisabled)" onOK="@command('agregarRegistro')" sclass="w3-input formatTextBoxOnFormulario"/>
+							</listcell>
+							<listcell>
 								<combobox width="100%" disabled="@bind(vm.capturador.lunes.vmDisabled)"
 									selectedItem="@bind(vm.capturador.lunes.incidencia)"
 									model="@load(vm.incidenciasCatalogo)">
@@ -162,8 +104,11 @@
 											tooltiptext="@load(each.descripcion)" />
 									</template>
 								</combobox>
-								
-								<intbox width="100%" value="@bind(vm.capturador.martes.hrs)" maxlength="2"  placeholder="hrs trabajadas" id="intMartes" disabled="@bind(vm.capturador.martes.vmDisabled)" onOK="@command('agregarRegistro')"/>
+							</listcell>
+							<listcell>
+								<intbox width="100%" value="@bind(vm.capturador.martes.hrs)" maxlength="2"  placeholder="hrs trabajadas" id="intMartes" disabled="@bind(vm.capturador.martes.vmDisabled)" onOK="@command('agregarRegistro')" sclass="w3-input formatTextBoxOnFormulario"/>
+							</listcell>
+							<listcell>
 								<combobox width="100%" disabled="@bind(vm.capturador.martes.vmDisabled)"
 									selectedItem="@bind(vm.capturador.martes.incidencia)"
 									model="@load(vm.incidenciasCatalogo)">
@@ -173,65 +118,60 @@
 											tooltiptext="@load(each.descripcion)" />
 									</template>
 								</combobox>
-								
-								<intbox width="100%" value="@bind(vm.capturador.miercoles.hrs)" maxlength="2"  placeholder="hrs trabajadas" id="intMiercoles" disabled="@bind(vm.capturador.miercoles.vmDisabled)" onOK="@command('agregarRegistro')"/>
-								<combobox width="100%" disabled="@bind(vm.capturador.miercoles.vmDisabled)"
-									selectedItem="@bind(vm.capturador.miercoles.incidencia)"
-									model="@load(vm.incidenciasCatalogo)">
-									<template name="model">
-										<comboitem
-											label="@load(each.concater)"
-											tooltiptext="@load(each.descripcion)" />
-									</template>
-								</combobox>
-								
-								<intbox width="100%" value="@bind(vm.capturador.jueves.hrs)" maxlength="2"  placeholder="hrs trabajadas" id="intJueves" disabled="@bind(vm.capturador.jueves.vmDisabled)" onOK="@command('agregarRegistro')"/>
-								<combobox width="100%" disabled="@bind(vm.capturador.jueves.vmDisabled)"
-									selectedItem="@bind(vm.capturador.jueves.incidencia)"
-									model="@load(vm.incidenciasCatalogo)">
-									<template name="model">
-										<comboitem
-											label="@load(each.concater)"
-											tooltiptext="@load(each.descripcion)" />
-									</template>
-								</combobox>
-								
-								<intbox width="100%" value="@bind(vm.capturador.viernes.hrs)" maxlength="2"  placeholder="hrs trabajadas" id="intViernes" disabled="@bind(vm.capturador.viernes.vmDisabled)" onOK="@command('agregarRegistro')"/>
-								<combobox width="100%" disabled="@bind(vm.capturador.viernes.vmDisabled)"
-									selectedItem="@bind(vm.capturador.viernes.incidencia)"
-									model="@load(vm.incidenciasCatalogo)">
-									<template name="model">
-										<comboitem
-											label="@load(each.concater)"
-											tooltiptext="@load(each.descripcion)" />
-									</template>
-								</combobox>
-								
-								<intbox width="100%" value="@bind(vm.capturador.sabado.hrs)" maxlength="2"  placeholder="hrs trabajadas" id="intSabado" disabled="@bind(vm.capturador.sabado.vmDisabled)" onOK="@command('agregarRegistro')"/>
-								<combobox width="100%" disabled="@bind(vm.capturador.sabado.vmDisabled)"
-									selectedItem="@bind(vm.capturador.sabado.incidencia)"
-									model="@load(vm.incidenciasCatalogo)">
-									<template name="model">
-										<comboitem
-											label="@load(each.concater)"
-											tooltiptext="@load(each.descripcion)" />
-									</template>
-								</combobox>
-								
-								<intbox width="100%" value="@bind(vm.capturador.domingo.hrs)" maxlength="2"  placeholder="hrs trabajadas" id="intDomi" disabled="@bind(vm.capturador.domingo.vmDisabled)" onOK="@command('agregarRegistro')"/>
-								<combobox width="100%" disabled="@bind(vm.capturador.domingo.vmDisabled)"
-									selectedItem="@bind(vm.capturador.domingo.incidencia)"
-									model="@load(vm.incidenciasCatalogo)">
-									<template name="model">
-										<comboitem
-											label="@load(each.concater)"
-											tooltiptext="@load(each.descripcion)" />
-									</template>
-								</combobox>
-								
-							</row>
-						</rows>
-					</grid>
+							</listcell>
+							<listcell>
+							    <intbox width="100%" value="@bind(vm.capturador.miercoles.hrs)" maxlength="2" placeholder="hrs trabajadas" id="intMiercoles" disabled="@bind(vm.capturador.miercoles.vmDisabled)" onOK="@command('agregarRegistro')" sclass="w3-input formatTextBoxOnFormulario" />
+							</listcell>
+							<listcell>
+							    <combobox width="100%" disabled="@bind(vm.capturador.miercoles.vmDisabled)" selectedItem="@bind(vm.capturador.miercoles.incidencia)" model="@load(vm.incidenciasCatalogo)">
+							        <template name="model">
+							            <comboitem label="@load(each.concater)" tooltiptext="@load(each.descripcion)" />
+							        </template>
+							    </combobox>
+							</listcell>
+							<listcell>
+							    <intbox width="100%" value="@bind(vm.capturador.jueves.hrs)" maxlength="2" placeholder="hrs trabajadas" id="intJueves" disabled="@bind(vm.capturador.jueves.vmDisabled)" onOK="@command('agregarRegistro')" sclass="w3-input formatTextBoxOnFormulario"/>
+							</listcell>
+							<listcell>
+							    <combobox width="100%" disabled="@bind(vm.capturador.jueves.vmDisabled)" selectedItem="@bind(vm.capturador.jueves.incidencia)" model="@load(vm.incidenciasCatalogo)">
+							        <template name="model">
+							            <comboitem label="@load(each.concater)" tooltiptext="@load(each.descripcion)" />
+							        </template>
+							    </combobox>
+							</listcell>
+							<listcell>
+							    <intbox width="100%" value="@bind(vm.capturador.viernes.hrs)" maxlength="2" placeholder="hrs trabajadas" id="intViernes" disabled="@bind(vm.capturador.viernes.vmDisabled)" onOK="@command('agregarRegistro')" sclass="w3-input formatTextBoxOnFormulario"/>
+							</listcell>
+							<listcell>
+							    <combobox width="100%" disabled="@bind(vm.capturador.viernes.vmDisabled)" selectedItem="@bind(vm.capturador.viernes.incidencia)" model="@load(vm.incidenciasCatalogo)">
+							        <template name="model">
+							            <comboitem label="@load(each.concater)" tooltiptext="@load(each.descripcion)" />
+							        </template>
+							    </combobox>
+							</listcell>
+							<listcell>
+							    <intbox width="100%" value="@bind(vm.capturador.sabado.hrs)" maxlength="2" placeholder="hrs trabajadas" id="intSabado" disabled="@bind(vm.capturador.sabado.vmDisabled)" onOK="@command('agregarRegistro')" sclass="w3-input formatTextBoxOnFormulario" />
+							</listcell>
+							<listcell>
+							    <combobox width="100%" disabled="@bind(vm.capturador.sabado.vmDisabled)" selectedItem="@bind(vm.capturador.sabado.incidencia)" model="@load(vm.incidenciasCatalogo)">
+							        <template name="model">
+							            <comboitem label="@load(each.concater)" tooltiptext="@load(each.descripcion)" />
+							        </template>
+							    </combobox>
+							</listcell>
+							<listcell>
+							    <intbox width="100%" value="@bind(vm.capturador.domingo.hrs)" maxlength="2" placeholder="hrs trabajadas" id="intDomi" disabled="@bind(vm.capturador.domingo.vmDisabled)" onOK="@command('agregarRegistro')" sclass="w3-input formatTextBoxOnFormulario" />
+							</listcell>
+							<listcell>
+							    <combobox width="100%" disabled="@bind(vm.capturador.domingo.vmDisabled)" selectedItem="@bind(vm.capturador.domingo.incidencia)" model="@load(vm.incidenciasCatalogo)">
+							        <template name="model">
+							            <comboitem label="@load(each.concater)" tooltiptext="@load(each.descripcion)" />
+							        </template>
+							    </combobox>
+							</listcell>
+						</listitem>
+					</listbox>
+					
 					<grid sclass="my-grid">
 						<columns>
 							<column width="270px"/>
@@ -265,13 +205,13 @@
 									</rows>
 								</grid>
 								
-								<textbox width="100%" value="@bind(vm.capturador.lunes.observacion)" placeholder="observaciones" disabled="@bind(vm.capturador.lunes.vmDisabled)" onOK="@command('agregarRegistro')"/>
-								<textbox width="100%" value="@bind(vm.capturador.martes.observacion)" placeholder="observaciones" disabled="@bind(vm.capturador.martes.vmDisabled)" onOK="@command('agregarRegistro')"/>
-								<textbox width="100%" value="@bind(vm.capturador.miercoles.observacion)" placeholder="observaciones" disabled="@bind(vm.capturador.miercoles.vmDisabled)" onOK="@command('agregarRegistro')"/>
-								<textbox width="100%" value="@bind(vm.capturador.jueves.observacion)" placeholder="observaciones" disabled="@bind(vm.capturador.jueves.vmDisabled)" onOK="@command('agregarRegistro')"/>
-								<textbox width="100%" value="@bind(vm.capturador.viernes.observacion)" placeholder="observaciones" disabled="@bind(vm.capturador.viernes.vmDisabled)" onOK="@command('agregarRegistro')"/>
-								<textbox width="100%" value="@bind(vm.capturador.sabado.observacion)" placeholder="observaciones" disabled="@bind(vm.capturador.sabado.vmDisabled)" onOK="@command('agregarRegistro')"/>
-								<textbox width="100%" value="@bind(vm.capturador.domingo.observacion)" placeholder="observaciones" disabled="@bind(vm.capturador.domingo.vmDisabled)" onOK="@command('agregarRegistro')"/>
+								<textbox width="100%" value="@bind(vm.capturador.lunes.observacion)" placeholder="observaciones" disabled="@bind(vm.capturador.lunes.vmDisabled)" onOK="@command('agregarRegistro')" sclass="w3-input formatTextBoxOnFormulario"/>
+								<textbox width="100%" value="@bind(vm.capturador.martes.observacion)" placeholder="observaciones" disabled="@bind(vm.capturador.martes.vmDisabled)" onOK="@command('agregarRegistro')" sclass="w3-input formatTextBoxOnFormulario"/>
+								<textbox width="100%" value="@bind(vm.capturador.miercoles.observacion)" placeholder="observaciones" disabled="@bind(vm.capturador.miercoles.vmDisabled)" onOK="@command('agregarRegistro')" sclass="w3-input formatTextBoxOnFormulario"/>
+								<textbox width="100%" value="@bind(vm.capturador.jueves.observacion)" placeholder="observaciones" disabled="@bind(vm.capturador.jueves.vmDisabled)" onOK="@command('agregarRegistro')" sclass="w3-input formatTextBoxOnFormulario"/>
+								<textbox width="100%" value="@bind(vm.capturador.viernes.observacion)" placeholder="observaciones" disabled="@bind(vm.capturador.viernes.vmDisabled)" onOK="@command('agregarRegistro')" sclass="w3-input formatTextBoxOnFormulario"/>
+								<textbox width="100%" value="@bind(vm.capturador.sabado.observacion)" placeholder="observaciones" disabled="@bind(vm.capturador.sabado.vmDisabled)" onOK="@command('agregarRegistro')" sclass="w3-input formatTextBoxOnFormulario"/>
+								<textbox width="100%" value="@bind(vm.capturador.domingo.observacion)" placeholder="observaciones" disabled="@bind(vm.capturador.domingo.vmDisabled)" onOK="@command('agregarRegistro')" sclass="w3-input formatTextBoxOnFormulario"/>
 							</row>
 						</rows>
 					</grid>
@@ -279,7 +219,7 @@
 			</north>
 			<center border="none">
 				<window vflex="1" width="100%" height="100%" border="none">
-					<listbox model="@load(vm.asistenciaAdminList)" vflex="1">
+					<listbox model="@load(vm.asistenciaAdminList)" vflex="1" sclass="listboxBuscador">
 
 						<listhead>
 							<listheader label="Colaborador"/>

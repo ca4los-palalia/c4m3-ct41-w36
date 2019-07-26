@@ -48,8 +48,8 @@
 														<label value="Modificar fotografia:" style="font-size:80%;"
 															sclass="formatLabelOnFormulario" />
 														<button sclass="btnOrange"
-															Label="Subir logo" style="width: auto; height: 100%;"
-															tooltiptext="Subir logotipo de la entidad"
+															Label="Subir fotografia" style="width: auto; height: 100%;"
+															tooltiptext="Subir fotografia del trabajador"
 															upload="true,maxsize=10000"
 															onUpload="@command('uploadLogo', upEvent=event)"
 															mold="trendy" />
