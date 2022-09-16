@@ -48,7 +48,7 @@
 		<mail.version>1.4.5</mail.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<zkoss.version>6.5.0</zkoss.version>
+		<zkoss.version>9.6.0.2</zkoss.version>
 <!-- <zkoss.version>8.6.0.1</zkoss.version> -->
 
 		
